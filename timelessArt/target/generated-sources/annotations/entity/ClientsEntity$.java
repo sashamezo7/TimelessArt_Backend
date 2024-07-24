@@ -4,7 +4,6 @@ import com.speedment.jpastreamer.field.ComparableField;
 import com.speedment.jpastreamer.field.IntField;
 import com.speedment.jpastreamer.field.ReferenceField;
 import com.speedment.jpastreamer.field.StringField;
-import entity.ClientsEntity.orderStatus;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -20,33 +19,6 @@ import java.util.List;
 public final class ClientsEntity$ {
     
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "id".
-     */
-    public static final IntField<ClientsEntity> id = IntField.create(
-        ClientsEntity.class,
-        "id",
-        ClientsEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "city".
-     */
-    public static final StringField<ClientsEntity> city = StringField.create(
-        ClientsEntity.class,
-        "city",
-        ClientsEntity::getCity,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "country".
-     */
-    public static final StringField<ClientsEntity> country = StringField.create(
-        ClientsEntity.class,
-        "country",
-        ClientsEntity::getCountry,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ClientsEntity} field "reviews".
      */
     public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
@@ -56,12 +28,12 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "orders".
+     * This Field corresponds to the {@link ClientsEntity} field "phone".
      */
-    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
+    public static final StringField<ClientsEntity> phone = StringField.create(
         ClientsEntity.class,
-        "orders",
-        ClientsEntity::getOrders,
+        "phone",
+        ClientsEntity::getPhone,
         false
     );
     /**
@@ -74,21 +46,12 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "email".
+     * This Field corresponds to the {@link ClientsEntity} field "orders".
      */
-    public static final StringField<ClientsEntity> email = StringField.create(
+    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
         ClientsEntity.class,
-        "email",
-        ClientsEntity::getEmail,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "address".
-     */
-    public static final StringField<ClientsEntity> address = StringField.create(
-        ClientsEntity.class,
-        "address",
-        ClientsEntity::getAddress,
+        "orders",
+        ClientsEntity::getOrders,
         false
     );
     /**
@@ -102,6 +65,33 @@ public final class ClientsEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ClientsEntity} field "id".
+     */
+    public static final IntField<ClientsEntity> id = IntField.create(
+        ClientsEntity.class,
+        "id",
+        ClientsEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "country".
+     */
+    public static final StringField<ClientsEntity> country = StringField.create(
+        ClientsEntity.class,
+        "country",
+        ClientsEntity::getCountry,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "account".
+     */
+    public static final ReferenceField<ClientsEntity, AccountEntity> account = ReferenceField.create(
+        ClientsEntity.class,
+        "account",
+        ClientsEntity::getAccount,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ClientsEntity} field "name".
      */
     public static final StringField<ClientsEntity> name = StringField.create(
@@ -111,12 +101,21 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "phone".
+     * This Field corresponds to the {@link ClientsEntity} field "address".
      */
-    public static final StringField<ClientsEntity> phone = StringField.create(
+    public static final StringField<ClientsEntity> address = StringField.create(
         ClientsEntity.class,
-        "phone",
-        ClientsEntity::getPhone,
+        "address",
+        ClientsEntity::getAddress,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "city".
+     */
+    public static final StringField<ClientsEntity> city = StringField.create(
+        ClientsEntity.class,
+        "city",
+        ClientsEntity::getCity,
         false
     );
     /**
@@ -126,15 +125,6 @@ public final class ClientsEntity$ {
         ClientsEntity.class,
         "firstName",
         ClientsEntity::getFirstName,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "status".
-     */
-    public static final ComparableField<ClientsEntity, orderStatus> status = ComparableField.create(
-        ClientsEntity.class,
-        "status",
-        ClientsEntity::getStatus,
         false
     );
     /**

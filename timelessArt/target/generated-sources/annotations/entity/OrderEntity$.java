@@ -20,30 +20,12 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
+     * This Field corresponds to the {@link OrderEntity} field "id".
      */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+    public static final IntField<OrderEntity> id = IntField.create(
         OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "price".
-     */
-    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
-        OrderEntity.class,
-        "price",
-        OrderEntity::getPrice,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "artworks".
-     */
-    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
-        OrderEntity.class,
-        "artworks",
-        OrderEntity::getArtworks,
+        "id",
+        OrderEntity::getId,
         false
     );
     /**
@@ -56,12 +38,30 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "orderDate".
+     * This Field corresponds to the {@link OrderEntity} field "status".
      */
-    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
         OrderEntity.class,
-        "orderDate",
-        OrderEntity::getOrderDate,
+        "status",
+        OrderEntity::getStatus,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "artworks".
+     */
+    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
+        OrderEntity.class,
+        "artworks",
+        OrderEntity::getArtworks,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "price".
+     */
+    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
+        OrderEntity.class,
+        "price",
+        OrderEntity::getPrice,
         false
     );
     /**
@@ -74,12 +74,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
+     * This Field corresponds to the {@link OrderEntity} field "orderDate".
      */
-    public static final IntField<OrderEntity> id = IntField.create(
+    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
         OrderEntity.class,
-        "id",
-        OrderEntity::getId,
+        "orderDate",
+        OrderEntity::getOrderDate,
         false
     );
 }

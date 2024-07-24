@@ -1,11 +1,19 @@
 package entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "exhibition", schema = "timelessart", catalog = "")
 public class ExhibitionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,78 +44,11 @@ public class ExhibitionEntity {
     @Enumerated(EnumType.STRING)
     private exhibitionStatus status;
 
+    @Column(name = "picture_url")
+    private String pictureUrl;
+
 
     public enum exhibitionStatus{planificata,indesfasurare,finalizata}
 
-    public int getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public exhibitionStatus getStatus() {
-        return status;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setStatus(exhibitionStatus status) {
-        this.status = status;
-    }
-
-    public List<ArtistEntity> getArtists() {
-        return artists;
-    }
-
-    public List<ArtworkEntity> getArtworks() {
-        return artworks;
-    }
-
-    public void setArtists(List<ArtistEntity> artists) {
-        this.artists = artists;
-    }
-
-    public void setArtworks(List<ArtworkEntity> artworks) {
-        this.artworks = artworks;
-    }
 }
