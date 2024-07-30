@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TimelessArt_Backend.iml" filepath="$PROJECT_DIR$/.idea/TimelessArt_Backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/timelessArt/timeless.iml" filepath="$PROJECT_DIR$/timelessArt/timeless.iml" />
     </modules>
   </component>
 </project>

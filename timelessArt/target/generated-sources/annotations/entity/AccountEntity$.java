@@ -14,6 +14,33 @@ import com.speedment.jpastreamer.field.StringField;
 public final class AccountEntity$ {
     
     /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     */
+    public static final StringField<AccountEntity> keyArtist = StringField.create(
+        AccountEntity.class,
+        "keyArtist",
+        AccountEntity::getKeyArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
+     */
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
+        AccountEntity.class,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
      * This Field corresponds to the {@link AccountEntity} field "password".
      */
     public static final StringField<AccountEntity> password = StringField.create(
@@ -32,39 +59,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "email".
      */
     public static final StringField<AccountEntity> email = StringField.create(
         AccountEntity.class,
         "email",
         AccountEntity::getEmail,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
-     */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
-        AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
-     */
-    public static final StringField<AccountEntity> keyArtist = StringField.create(
-        AccountEntity.class,
-        "keyArtist",
-        AccountEntity::getKeyArtist,
         false
     );
 }
