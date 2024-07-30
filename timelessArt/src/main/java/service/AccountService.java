@@ -1,6 +1,7 @@
 package service;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import validation.EmailValidator;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
 import io.jsonwebtoken.Claims;
@@ -11,6 +12,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import repo.AccountRepo;
+import validation.PasswordValidator;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -29,11 +31,11 @@ public class AccountService {
     private static final SecretKey key = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
     @Transactional
     public AccountEntity createAccount(String email, String password) {
-        if (containsSpaces(email)) {
-            throw new IllegalArgumentException("Email should not contain spaces");
+        if (!EmailValidator.isValid(email)) {
+            throw new IllegalArgumentException("Email not valid");
         }
-        if (containsSpaces(password)) {
-            throw new IllegalArgumentException("Password should not contain spaces");
+        if (!PasswordValidator.isValid(password)) {
+            throw new IllegalArgumentException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
         }
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         AccountEntity account = AccountEntity.builder()
@@ -58,11 +60,11 @@ public class AccountService {
 
     @Transactional
     public String authenticate(String email, String password) {
-        if (containsSpaces(email)) {
-            throw new IllegalArgumentException("Email should not contain spaces");
+        if (!EmailValidator.isValid(email)) {
+            throw new IllegalArgumentException("Email not valid");
         }
-        if (containsSpaces(password)) {
-            throw new IllegalArgumentException("Password should not contain spaces");
+        if (!PasswordValidator.isValid(password)) {
+            throw new IllegalArgumentException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
         }
         AccountEntity account = accountRepo.findByEmail(email);
         if (account == null) {

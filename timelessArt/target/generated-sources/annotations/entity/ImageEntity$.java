@@ -14,15 +14,6 @@ import com.speedment.jpastreamer.field.StringField;
 public final class ImageEntity$ {
     
     /**
-     * This Field corresponds to the {@link ImageEntity} field "id".
-     */
-    public static final IntField<ImageEntity> id = IntField.create(
-        ImageEntity.class,
-        "id",
-        ImageEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ImageEntity} field "url".
      */
     public static final StringField<ImageEntity> url = StringField.create(
@@ -38,6 +29,15 @@ public final class ImageEntity$ {
         ImageEntity.class,
         "artwork",
         ImageEntity::getArtwork,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ImageEntity} field "id".
+     */
+    public static final IntField<ImageEntity> id = IntField.create(
+        ImageEntity.class,
+        "id",
+        ImageEntity::getId,
         false
     );
 }

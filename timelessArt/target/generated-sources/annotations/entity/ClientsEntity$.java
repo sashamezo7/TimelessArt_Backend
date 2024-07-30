@@ -19,48 +19,13 @@ import java.util.List;
 public final class ClientsEntity$ {
     
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "id".
+     * This Field corresponds to the {@link ClientsEntity} field
+     * "registrationDate".
      */
-    public static final IntField<ClientsEntity> id = IntField.create(
+    public static final ComparableField<ClientsEntity, Timestamp> registrationDate = ComparableField.create(
         ClientsEntity.class,
-        "id",
-        ClientsEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "firstName".
-     */
-    public static final StringField<ClientsEntity> firstName = StringField.create(
-        ClientsEntity.class,
-        "firstName",
-        ClientsEntity::getFirstName,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "country".
-     */
-    public static final StringField<ClientsEntity> country = StringField.create(
-        ClientsEntity.class,
-        "country",
-        ClientsEntity::getCountry,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "postalCode".
-     */
-    public static final StringField<ClientsEntity> postalCode = StringField.create(
-        ClientsEntity.class,
-        "postalCode",
-        ClientsEntity::getPostalCode,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "reviews".
-     */
-    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
-        ClientsEntity.class,
-        "reviews",
-        ClientsEntity::getReviews,
+        "registrationDate",
+        ClientsEntity::getRegistrationDate,
         false
     );
     /**
@@ -73,40 +38,12 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "orders".
+     * This Field corresponds to the {@link ClientsEntity} field "address".
      */
-    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
+    public static final StringField<ClientsEntity> address = StringField.create(
         ClientsEntity.class,
-        "orders",
-        ClientsEntity::getOrders,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "account".
-     */
-    public static final ReferenceField<ClientsEntity, AccountEntity> account = ReferenceField.create(
-        ClientsEntity.class,
-        "account",
-        ClientsEntity::getAccount,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field
-     * "registrationDate".
-     */
-    public static final ComparableField<ClientsEntity, Timestamp> registrationDate = ComparableField.create(
-        ClientsEntity.class,
-        "registrationDate",
-        ClientsEntity::getRegistrationDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "phone".
-     */
-    public static final StringField<ClientsEntity> phone = StringField.create(
-        ClientsEntity.class,
-        "phone",
-        ClientsEntity::getPhone,
+        "address",
+        ClientsEntity::getAddress,
         false
     );
     /**
@@ -119,6 +56,42 @@ public final class ClientsEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ClientsEntity} field "orders".
+     */
+    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
+        ClientsEntity.class,
+        "orders",
+        ClientsEntity::getOrders,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "postalCode".
+     */
+    public static final StringField<ClientsEntity> postalCode = StringField.create(
+        ClientsEntity.class,
+        "postalCode",
+        ClientsEntity::getPostalCode,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "id".
+     */
+    public static final IntField<ClientsEntity> id = IntField.create(
+        ClientsEntity.class,
+        "id",
+        ClientsEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "country".
+     */
+    public static final StringField<ClientsEntity> country = StringField.create(
+        ClientsEntity.class,
+        "country",
+        ClientsEntity::getCountry,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ClientsEntity} field "name".
      */
     public static final StringField<ClientsEntity> name = StringField.create(
@@ -128,12 +101,39 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "address".
+     * This Field corresponds to the {@link ClientsEntity} field "firstName".
      */
-    public static final StringField<ClientsEntity> address = StringField.create(
+    public static final StringField<ClientsEntity> firstName = StringField.create(
         ClientsEntity.class,
-        "address",
-        ClientsEntity::getAddress,
+        "firstName",
+        ClientsEntity::getFirstName,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "account".
+     */
+    public static final ReferenceField<ClientsEntity, AccountEntity> account = ReferenceField.create(
+        ClientsEntity.class,
+        "account",
+        ClientsEntity::getAccount,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "phone".
+     */
+    public static final StringField<ClientsEntity> phone = StringField.create(
+        ClientsEntity.class,
+        "phone",
+        ClientsEntity::getPhone,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "reviews".
+     */
+    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
+        ClientsEntity.class,
+        "reviews",
+        ClientsEntity::getReviews,
         false
     );
 }

@@ -14,6 +14,15 @@ import com.speedment.jpastreamer.field.StringField;
 public final class AccountEntity$ {
     
     /**
+     * This Field corresponds to the {@link AccountEntity} field "email".
+     */
+    public static final StringField<AccountEntity> email = StringField.create(
+        AccountEntity.class,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
+    /**
      * This Field corresponds to the {@link AccountEntity} field "id".
      */
     public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
@@ -32,6 +41,15 @@ public final class AccountEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link AccountEntity} field "token".
+     */
+    public static final StringField<AccountEntity> token = StringField.create(
+        AccountEntity.class,
+        "token",
+        AccountEntity::getToken,
+        false
+    );
+    /**
      * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
     public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
@@ -47,24 +65,6 @@ public final class AccountEntity$ {
         AccountEntity.class,
         "password",
         AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "token".
-     */
-    public static final StringField<AccountEntity> token = StringField.create(
-        AccountEntity.class,
-        "token",
-        AccountEntity::getToken,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
-     */
-    public static final StringField<AccountEntity> email = StringField.create(
-        AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
         false
     );
 }
