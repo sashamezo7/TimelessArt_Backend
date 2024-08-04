@@ -6,11 +6,14 @@ import DTO.AuthenticationResponse;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.core.Context;
 import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import repo.AccountRepo;
+import security.JwtFilter;
 import service.AccountService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -32,6 +35,9 @@ public class AccountController {
 
     @Inject
     AccountService accountService;
+
+    @Inject
+    JwtFilter jwtFilter;
     @POST
     @Path("/create")
     public Response createAccount(AccountRequest request) {
@@ -65,13 +71,11 @@ public class AccountController {
     }
 
     @GET
-    @RolesAllowed("ADMIN")
-    @SecurityRequirement(name = "Authorization")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed("ADMIN")
     public Response getAllAccounts() {
-        List<AccountEntity> accounts = accountService.getAllAccounts();
-        return Response.ok(accounts).build();
+            List<AccountEntity> accounts = accountService.getAllAccounts();
+            return Response.status(Response.Status.FOUND).entity(accounts).build();
     }
-
 
 }

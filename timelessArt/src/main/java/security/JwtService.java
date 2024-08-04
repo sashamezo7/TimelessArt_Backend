@@ -1,5 +1,6 @@
-package service;
+package security;
 
+import entity.AccountEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +13,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -43,27 +43,26 @@ public class JwtService {
         key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateJwtToken(String email, List<String> roles) {
-        Claims claims = Jwts.claims().setSubject(email);
-        claims.put("roles", roles);
+    public String generateJwtToken(AccountEntity account) {
+        Claims claims = Jwts.claims().setSubject(account.getEmail());
+        claims.put("roles", List.of(account.getRole().toString()));
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuer(issuer)
                 .setAudience(audience)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTime * 1000)) // Convert to milliseconds
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTime * 1000))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public Claims verifyJwtToken(String token) {
-        Jws<Claims> claimsJws = Jwts.parserBuilder()
+        return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .requireIssuer(issuer)
                 .requireAudience(audience)
                 .build()
-                .parseClaimsJws(token);
-
-        return claimsJws.getBody();
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

@@ -1,21 +1,16 @@
 package service;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import security.JwtService;
 import validation.EmailValidator;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import repo.AccountRepo;
 import validation.PasswordValidator;
 
-import javax.crypto.SecretKey;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,6 +40,7 @@ public class AccountService {
                 .password(bcryptHashString)
                 .token(generateToken())
                 .validAccount(true)
+                .role(AccountEntity.Role.CLIENT)
                 .build();
         accountRepo.save(account);
         return account;
@@ -82,7 +78,7 @@ public class AccountService {
         if (!account.isValidAccount()) {
             throw new InvalidCredentialsException("Account is not verified");
         }
-        return jwtService.generateJwtToken(account.getEmail(), List.of("ROLE_USER"));
+        return jwtService.generateJwtToken(account);
 
 
     }

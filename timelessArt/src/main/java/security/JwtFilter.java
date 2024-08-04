@@ -1,7 +1,5 @@
 package security;
 
-import security.JwtSecurityContext;
-import service.JwtService;
 import io.jsonwebtoken.Claims;
 import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
@@ -50,5 +48,9 @@ public class JwtFilter implements ContainerRequestFilter {
             LOGGER.severe("Token verification failed: " + e.getMessage());
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
+
+
     }
+
+
 }

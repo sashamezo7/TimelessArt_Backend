@@ -22,6 +22,33 @@ import java.util.List;
 public final class ArtworkEntity$ {
     
     /**
+     * This Field corresponds to the {@link ArtworkEntity} field "title".
+     */
+    public static final StringField<ArtworkEntity> title = StringField.create(
+        ArtworkEntity.class,
+        "title",
+        ArtworkEntity::getTitle,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artworkType".
+     */
+    public static final ComparableField<ArtworkEntity, typeArtwork> artworkType = ComparableField.create(
+        ArtworkEntity.class,
+        "artworkType",
+        ArtworkEntity::getArtworkType,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "description".
+     */
+    public static final StringField<ArtworkEntity> description = StringField.create(
+        ArtworkEntity.class,
+        "description",
+        ArtworkEntity::getDescription,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ArtworkEntity} field "exhibition".
      */
     public static final ReferenceField<ArtworkEntity, ExhibitionEntity> exhibition = ReferenceField.create(
@@ -49,39 +76,12 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "title".
+     * This Field corresponds to the {@link ArtworkEntity} field "id".
      */
-    public static final StringField<ArtworkEntity> title = StringField.create(
+    public static final IntField<ArtworkEntity> id = IntField.create(
         ArtworkEntity.class,
-        "title",
-        ArtworkEntity::getTitle,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artist".
-     */
-    public static final ReferenceField<ArtworkEntity, ArtistEntity> artist = ReferenceField.create(
-        ArtworkEntity.class,
-        "artist",
-        ArtworkEntity::getArtist,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "description".
-     */
-    public static final StringField<ArtworkEntity> description = StringField.create(
-        ArtworkEntity.class,
-        "description",
-        ArtworkEntity::getDescription,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "price".
-     */
-    public static final ComparableField<ArtworkEntity, BigDecimal> price = ComparableField.create(
-        ArtworkEntity.class,
-        "price",
-        ArtworkEntity::getPrice,
+        "id",
+        ArtworkEntity::getId,
         false
     );
     /**
@@ -94,21 +94,12 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "id".
+     * This Field corresponds to the {@link ArtworkEntity} field "addingDate".
      */
-    public static final IntField<ArtworkEntity> id = IntField.create(
+    public static final ComparableField<ArtworkEntity, Timestamp> addingDate = ComparableField.create(
         ArtworkEntity.class,
-        "id",
-        ArtworkEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "image".
-     */
-    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
-        ArtworkEntity.class,
-        "image",
-        ArtworkEntity::getImage,
+        "addingDate",
+        ArtworkEntity::getAddingDate,
         false
     );
     /**
@@ -121,6 +112,15 @@ public final class ArtworkEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artist".
+     */
+    public static final ReferenceField<ArtworkEntity, ArtistEntity> artist = ReferenceField.create(
+        ArtworkEntity.class,
+        "artist",
+        ArtworkEntity::getArtist,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ArtworkEntity} field "reviews".
      */
     public static final ReferenceField<ArtworkEntity, List<ReviewEntity>> reviews = ReferenceField.create(
@@ -130,21 +130,21 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "addingDate".
+     * This Field corresponds to the {@link ArtworkEntity} field "image".
      */
-    public static final ComparableField<ArtworkEntity, Timestamp> addingDate = ComparableField.create(
+    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
         ArtworkEntity.class,
-        "addingDate",
-        ArtworkEntity::getAddingDate,
+        "image",
+        ArtworkEntity::getImage,
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artworkType".
+     * This Field corresponds to the {@link ArtworkEntity} field "price".
      */
-    public static final ComparableField<ArtworkEntity, typeArtwork> artworkType = ComparableField.create(
+    public static final ComparableField<ArtworkEntity, BigDecimal> price = ComparableField.create(
         ArtworkEntity.class,
-        "artworkType",
-        ArtworkEntity::getArtworkType,
+        "price",
+        ArtworkEntity::getPrice,
         false
     );
 }

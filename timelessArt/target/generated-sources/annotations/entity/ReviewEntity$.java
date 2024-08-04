@@ -17,6 +17,15 @@ import java.sql.Timestamp;
 public final class ReviewEntity$ {
     
     /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     */
+    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+        ReviewEntity.class,
+        "reviewDate",
+        ReviewEntity::getReviewDate,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ReviewEntity} field "artwork".
      */
     public static final ReferenceField<ReviewEntity, ArtworkEntity> artwork = ReferenceField.create(
@@ -26,12 +35,12 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "rating".
+     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
      */
-    public static final ComparableField<ReviewEntity, Integer> rating = ComparableField.create(
+    public static final StringField<ReviewEntity> reviewText = StringField.create(
         ReviewEntity.class,
-        "rating",
-        ReviewEntity::getRating,
+        "reviewText",
+        ReviewEntity::getReviewText,
         false
     );
     /**
@@ -44,12 +53,12 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     * This Field corresponds to the {@link ReviewEntity} field "rating".
      */
-    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+    public static final ComparableField<ReviewEntity, Integer> rating = ComparableField.create(
         ReviewEntity.class,
-        "reviewDate",
-        ReviewEntity::getReviewDate,
+        "rating",
+        ReviewEntity::getRating,
         false
     );
     /**
@@ -59,15 +68,6 @@ public final class ReviewEntity$ {
         ReviewEntity.class,
         "id",
         ReviewEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
-     */
-    public static final StringField<ReviewEntity> reviewText = StringField.create(
-        ReviewEntity.class,
-        "reviewText",
-        ReviewEntity::getReviewText,
         false
     );
 }
