@@ -14,12 +14,12 @@ import com.speedment.jpastreamer.field.StringField;
 public final class VideoEntity$ {
     
     /**
-     * This Field corresponds to the {@link VideoEntity} field "artist".
+     * This Field corresponds to the {@link VideoEntity} field "url".
      */
-    public static final ReferenceField<VideoEntity, ArtistEntity> artist = ReferenceField.create(
+    public static final StringField<VideoEntity> url = StringField.create(
         VideoEntity.class,
-        "artist",
-        VideoEntity::getArtist,
+        "url",
+        VideoEntity::getUrl,
         false
     );
     /**
@@ -32,12 +32,12 @@ public final class VideoEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link VideoEntity} field "url".
+     * This Field corresponds to the {@link VideoEntity} field "artist".
      */
-    public static final StringField<VideoEntity> url = StringField.create(
+    public static final ReferenceField<VideoEntity, ArtistEntity> artist = ReferenceField.create(
         VideoEntity.class,
-        "url",
-        VideoEntity::getUrl,
+        "artist",
+        VideoEntity::getArtist,
         false
     );
     /**

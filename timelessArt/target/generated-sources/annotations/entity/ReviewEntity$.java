@@ -35,6 +35,15 @@ public final class ReviewEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
+     */
+    public static final StringField<ReviewEntity> reviewText = StringField.create(
+        ReviewEntity.class,
+        "reviewText",
+        ReviewEntity::getReviewText,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ReviewEntity} field "rating".
      */
     public static final ComparableField<ReviewEntity, Integer> rating = ComparableField.create(
@@ -59,15 +68,6 @@ public final class ReviewEntity$ {
         ReviewEntity.class,
         "id",
         ReviewEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
-     */
-    public static final StringField<ReviewEntity> reviewText = StringField.create(
-        ReviewEntity.class,
-        "reviewText",
-        ReviewEntity::getReviewText,
         false
     );
 }
