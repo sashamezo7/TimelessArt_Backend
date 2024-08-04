@@ -19,6 +19,7 @@ entity\ReviewEntity$.class
 entity\VideoEntity$.class
 entity\ArtistEntity$.class
 entity\ExhibitionEntity$.class
+security\JwtFilter.class
 entity\ArtistEntity$artistType.class
 entity\ArtworkEntity$.class
 entity\AccountEntity.class
@@ -41,5 +42,6 @@ validation\EmailValidator.class
 entity\ImageEntity.class
 entity\ArtworkEntity.class
 entity\ExhibitionEntity$exhibitionStatus.class
+security\JwtSecurityContext.class
 DTO\AuthenticationRequest.class
 entity\ClientsEntity$ClientsEntityBuilder.class

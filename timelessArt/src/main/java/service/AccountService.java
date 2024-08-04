@@ -25,12 +25,14 @@ public class AccountService {
 
     @Inject
     private AccountRepo accountRepo;
-    private static final String issuer = "http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui";
-    private static final String audience = "http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui";
-    private static final long expirationTime = 3600000;
-    private static final SecretKey key = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
+    @Inject
+    private JwtService jwtService;
     @Transactional
     public AccountEntity createAccount(String email, String password) {
+        AccountEntity account1 = accountRepo.findByEmail(email);
+        if(account1!=null){
+            throw new IllegalArgumentException("User exist");
+        }
         if (!EmailValidator.isValid(email)) {
             throw new IllegalArgumentException("Email not valid");
         }
@@ -47,6 +49,7 @@ public class AccountService {
         accountRepo.save(account);
         return account;
     }
+
 
     @Transactional
     public boolean deleteAccount(Long id) {
@@ -79,39 +82,17 @@ public class AccountService {
         if (!account.isValidAccount()) {
             throw new InvalidCredentialsException("Account is not verified");
         }
-        String jwt = generateJwtToken(account);
+        return jwtService.generateJwtToken(account.getEmail(), List.of("ROLE_USER"));
 
-        Jws<Claims> claims = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(jwt);
 
-        if (!claims.getBody().getIssuer().equals(issuer) || !claims.getBody().getAudience().equals(audience)) {
-            throw new InvalidCredentialsException("Invalid token");
-        }
-
-        return jwt;
-    }
-    private String generateJwtToken(AccountEntity account) {
-        return Jwts.builder()
-                .setSubject(account.getEmail())
-                .claim("roles", List.of("ROLE_USER"))
-                .setIssuer(issuer)
-                .setAudience(audience)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                .signWith(key)
-                .compact();
     }
     private String generateToken() {
         return UUID.randomUUID().toString();
     }
-    private Boolean containsSpaces(String text) {
-        for (char c : text.toCharArray()) {
-            if (c == ' ') {
-                return true;
-            }
-        }
-        return false;
+
+    @Transactional
+    public List<AccountEntity> getAllAccounts() {
+        return accountRepo.findAll();
     }
+
 }

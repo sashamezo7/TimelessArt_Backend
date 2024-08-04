@@ -19,6 +19,9 @@ C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\jav
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\repo\ExhibitionRepo.java
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\repo\OrderRepo.java
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\repo\ReviewRepo.java
+C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\security\JwtFilter.java
+C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\security\JwtSecurityContext.java
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\service\AccountService.java
+C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\service\JwtService.java
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\validation\EmailValidator.java
 C:\Users\anghe\timelessArt1\backend\TimelessArt_Backend\timelessArt\src\main\java\validation\PasswordValidator.java

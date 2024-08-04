@@ -20,6 +20,24 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
+     * This Field corresponds to the {@link OrderEntity} field "client".
+     */
+    public static final ReferenceField<OrderEntity, ClientsEntity> client = ReferenceField.create(
+        OrderEntity.class,
+        "client",
+        OrderEntity::getClient,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "id".
+     */
+    public static final IntField<OrderEntity> id = IntField.create(
+        OrderEntity.class,
+        "id",
+        OrderEntity::getId,
+        false
+    );
+    /**
      * This Field corresponds to the {@link OrderEntity} field "orderDate".
      */
     public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
@@ -38,12 +56,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
+     * This Field corresponds to the {@link OrderEntity} field "artworks".
      */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
         OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
+        "artworks",
+        OrderEntity::getArtworks,
         false
     );
     /**
@@ -56,30 +74,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "artworks".
+     * This Field corresponds to the {@link OrderEntity} field "status".
      */
-    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
         OrderEntity.class,
-        "artworks",
-        OrderEntity::getArtworks,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
-     */
-    public static final IntField<OrderEntity> id = IntField.create(
-        OrderEntity.class,
-        "id",
-        OrderEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "client".
-     */
-    public static final ReferenceField<OrderEntity, ClientsEntity> client = ReferenceField.create(
-        OrderEntity.class,
-        "client",
-        OrderEntity::getClient,
+        "status",
+        OrderEntity::getStatus,
         false
     );
 }
