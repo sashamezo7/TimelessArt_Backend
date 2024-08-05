@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 @Provider
-@Priority(Priorities.AUTHENTICATION)
+@Priority(Priorities.AUTHORIZATION)
 public class JwtFilter implements ContainerRequestFilter {
 
     @Inject
@@ -43,14 +43,11 @@ public class JwtFilter implements ContainerRequestFilter {
 
         try {
             Claims claims = jwtService.verifyJwtToken(token);
-            requestContext.setSecurityContext(new JwtSecurityContext(claims));
+            JwtSecurityContext securityContext = new JwtSecurityContext(claims);
+            requestContext.setSecurityContext(securityContext);
         } catch (Exception e) {
             LOGGER.severe("Token verification failed: " + e.getMessage());
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
-
-
     }
-
-
 }

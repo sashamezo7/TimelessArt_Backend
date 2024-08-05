@@ -6,13 +6,8 @@ import DTO.AuthenticationResponse;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
 import jakarta.annotation.security.RolesAllowed;
-import jakarta.ws.rs.container.ContainerRequestContext;
-import jakarta.ws.rs.core.Context;
-import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
-import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
-import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
-import org.eclipse.microprofile.openapi.annotations.tags.Tag;
-import repo.AccountRepo;
+
+
 import security.JwtFilter;
 import service.AccountService;
 import jakarta.inject.Inject;
@@ -22,12 +17,6 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Tag(name = "Account Controller", description = "Operations related to accounts")
-@SecurityScheme(securitySchemeName = "Authorization",
-        description = "JWT Bearer Token",
-        type = SecuritySchemeType.HTTP,
-        scheme = "bearer",
-        bearerFormat = "JWT")
 @Path("/api/accounts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -71,11 +60,12 @@ public class AccountController {
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all/accounts")
     @RolesAllowed("ADMIN")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
             List<AccountEntity> accounts = accountService.getAllAccounts();
-            return Response.status(Response.Status.FOUND).entity(accounts).build();
+            return Response.status(Response.Status.OK).entity(accounts).build();
     }
 
 }

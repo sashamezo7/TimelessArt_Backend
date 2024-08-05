@@ -2,7 +2,6 @@ package security;
 
 import entity.AccountEntity;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -10,7 +9,6 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 import javax.crypto.SecretKey;
 import java.util.Base64;
@@ -26,11 +24,10 @@ public class JwtService {
     private final String secretKey;
     private SecretKey key;
 
-    @Inject
     public JwtService(@ConfigProperty(name = "mp.jwt.verify.issuer") String issuer,
                       @ConfigProperty(name = "mp.jwt.verify.audience") String audience,
                       @ConfigProperty(name = "quarkus.jwt.expiration") long expirationTime,
-                      @ConfigProperty(name = "quarkus.jwt.secret") String secretKey) {
+                      @ConfigProperty(name = "smallrye.config.secret-handler.aes-gcm-nopadding.encryption-key") String secretKey) {
         this.issuer = issuer;
         this.audience = audience;
         this.expirationTime = expirationTime;
@@ -44,8 +41,10 @@ public class JwtService {
     }
 
     public String generateJwtToken(AccountEntity account) {
-        Claims claims = Jwts.claims().setSubject(account.getEmail());
+        Claims claims = Jwts.claims(); // Creează o instanță de Claims
+        claims.setSubject(account.getEmail());
         claims.put("roles", List.of(account.getRole().toString()));
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuer(issuer)

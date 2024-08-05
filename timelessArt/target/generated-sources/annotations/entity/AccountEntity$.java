@@ -15,12 +15,12 @@ import entity.AccountEntity.Role;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
+     * This Field corresponds to the {@link AccountEntity} field "password".
      */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
+    public static final StringField<AccountEntity> password = StringField.create(
         AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
+        "password",
+        AccountEntity::getPassword,
         false
     );
     /**
@@ -33,21 +33,21 @@ public final class AccountEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link AccountEntity} field "email".
+     */
+    public static final StringField<AccountEntity> email = StringField.create(
+        AccountEntity.class,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
+    /**
      * This Field corresponds to the {@link AccountEntity} field "keyArtist".
      */
     public static final StringField<AccountEntity> keyArtist = StringField.create(
         AccountEntity.class,
         "keyArtist",
         AccountEntity::getKeyArtist,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
-     */
-    public static final StringField<AccountEntity> password = StringField.create(
-        AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
         false
     );
     /**
@@ -69,12 +69,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
+     * This Field corresponds to the {@link AccountEntity} field "role".
      */
-    public static final StringField<AccountEntity> email = StringField.create(
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
         AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
+        "role",
+        AccountEntity::getRole,
         false
     );
 }
