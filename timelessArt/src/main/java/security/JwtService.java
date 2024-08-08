@@ -41,7 +41,6 @@ public class JwtService {
         this.expirationTime = expirationTime;
         this.privateKeyLocation = privateKeyLocation;
         this.publicKeyLocation = publicKeyLocation;
-
     }
 
     @PostConstruct
@@ -51,14 +50,21 @@ public class JwtService {
 
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
 
-        // Pentru cheia privată
-        System.out.println("cheia privata");
-        PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
+
+        String privateKeyPEM = new String(privateKeyBytes)
+                .replace("-----BEGIN PRIVATE KEY-----", "")
+                .replace("-----END PRIVATE KEY-----", "")
+                .replaceAll("\\s", "");
+        byte[] decodedPrivateKey = Base64.getDecoder().decode(privateKeyPEM);
+        PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(decodedPrivateKey);
         privateKey = keyFactory.generatePrivate(privateKeySpec);
 
-        // Pentru cheia publică
-        System.out.println("cheia publica");
-        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicKeyBytes);
+        String publicKeyPEM = new String(publicKeyBytes)
+                .replace("-----BEGIN PUBLIC KEY-----", "")
+                .replace("-----END PUBLIC KEY-----", "")
+                .replaceAll("\\s", "");
+        byte[] decodedPublicKey = Base64.getDecoder().decode(publicKeyPEM);
+        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(decodedPublicKey);
         publicKey = keyFactory.generatePublic(publicKeySpec);
     }
 
@@ -78,7 +84,6 @@ public class JwtService {
                 .compact();
     }
 
-
     public Claims verifyJwtToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(publicKey)
@@ -88,5 +93,4 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
-
 }
