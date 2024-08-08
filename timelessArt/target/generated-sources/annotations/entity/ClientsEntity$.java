@@ -19,34 +19,6 @@ import java.util.List;
 public final class ClientsEntity$ {
     
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "address".
-     */
-    public static final StringField<ClientsEntity> address = StringField.create(
-        ClientsEntity.class,
-        "address",
-        ClientsEntity::getAddress,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field
-     * "registrationDate".
-     */
-    public static final ComparableField<ClientsEntity, Timestamp> registrationDate = ComparableField.create(
-        ClientsEntity.class,
-        "registrationDate",
-        ClientsEntity::getRegistrationDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "id".
-     */
-    public static final IntField<ClientsEntity> id = IntField.create(
-        ClientsEntity.class,
-        "id",
-        ClientsEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ClientsEntity} field "account".
      */
     public static final ReferenceField<ClientsEntity, AccountEntity> account = ReferenceField.create(
@@ -56,12 +28,21 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "firstName".
+     * This Field corresponds to the {@link ClientsEntity} field "address".
      */
-    public static final StringField<ClientsEntity> firstName = StringField.create(
+    public static final StringField<ClientsEntity> address = StringField.create(
         ClientsEntity.class,
-        "firstName",
-        ClientsEntity::getFirstName,
+        "address",
+        ClientsEntity::getAddress,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "orders".
+     */
+    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
+        ClientsEntity.class,
+        "orders",
+        ClientsEntity::getOrders,
         false
     );
     /**
@@ -83,12 +64,12 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "phone".
+     * This Field corresponds to the {@link ClientsEntity} field "reviews".
      */
-    public static final StringField<ClientsEntity> phone = StringField.create(
+    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
         ClientsEntity.class,
-        "phone",
-        ClientsEntity::getPhone,
+        "reviews",
+        ClientsEntity::getReviews,
         false
     );
     /**
@@ -101,15 +82,6 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "reviews".
-     */
-    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
-        ClientsEntity.class,
-        "reviews",
-        ClientsEntity::getReviews,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ClientsEntity} field "name".
      */
     public static final StringField<ClientsEntity> name = StringField.create(
@@ -119,12 +91,31 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "orders".
+     * This Field corresponds to the {@link ClientsEntity} field
+     * "registrationDate".
      */
-    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
+    public static final ComparableField<ClientsEntity, Timestamp> registrationDate = ComparableField.create(
         ClientsEntity.class,
-        "orders",
-        ClientsEntity::getOrders,
+        "registrationDate",
+        ClientsEntity::getRegistrationDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "phone".
+     */
+    public static final StringField<ClientsEntity> phone = StringField.create(
+        ClientsEntity.class,
+        "phone",
+        ClientsEntity::getPhone,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "id".
+     */
+    public static final IntField<ClientsEntity> id = IntField.create(
+        ClientsEntity.class,
+        "id",
+        ClientsEntity::getId,
         false
     );
     /**
@@ -134,6 +125,15 @@ public final class ClientsEntity$ {
         ClientsEntity.class,
         "birthDate",
         ClientsEntity::getBirthDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "firstName".
+     */
+    public static final StringField<ClientsEntity> firstName = StringField.create(
+        ClientsEntity.class,
+        "firstName",
+        ClientsEntity::getFirstName,
         false
     );
 }

@@ -24,12 +24,21 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "token".
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
-    public static final StringField<AccountEntity> token = StringField.create(
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
         AccountEntity.class,
-        "token",
-        AccountEntity::getToken,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
         false
     );
     /**
@@ -51,21 +60,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
+     * This Field corresponds to the {@link AccountEntity} field "token".
      */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+    public static final StringField<AccountEntity> token = StringField.create(
         AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
+        "token",
+        AccountEntity::getToken,
         false
     );
     /**

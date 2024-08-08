@@ -29,12 +29,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
+     * This Field corresponds to the {@link OrderEntity} field "status".
      */
-    public static final IntField<OrderEntity> id = IntField.create(
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
         OrderEntity.class,
-        "id",
-        OrderEntity::getId,
+        "status",
+        OrderEntity::getStatus,
         false
     );
     /**
@@ -47,12 +47,21 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
+     * This Field corresponds to the {@link OrderEntity} field "price".
      */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
         OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
+        "price",
+        OrderEntity::getPrice,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "id".
+     */
+    public static final IntField<OrderEntity> id = IntField.create(
+        OrderEntity.class,
+        "id",
+        OrderEntity::getId,
         false
     );
     /**
@@ -62,15 +71,6 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "client",
         OrderEntity::getClient,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "price".
-     */
-    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
-        OrderEntity.class,
-        "price",
-        OrderEntity::getPrice,
         false
     );
     /**

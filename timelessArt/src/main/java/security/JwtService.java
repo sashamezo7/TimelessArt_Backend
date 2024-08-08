@@ -4,16 +4,21 @@ import entity.AccountEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import javax.crypto.SecretKey;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @ApplicationScoped
 public class JwtService {
@@ -21,27 +26,45 @@ public class JwtService {
     private final String issuer;
     private final String audience;
     private final long expirationTime;
-    private final String secretKey;
-    private SecretKey key;
+    private final String privateKeyLocation;
+    private final String publicKeyLocation;
+    private PrivateKey privateKey;
+    private PublicKey publicKey;
 
     public JwtService(@ConfigProperty(name = "mp.jwt.verify.issuer") String issuer,
                       @ConfigProperty(name = "mp.jwt.verify.audience") String audience,
-                      @ConfigProperty(name = "quarkus.jwt.expiration") long expirationTime,
-                      @ConfigProperty(name = "smallrye.config.secret-handler.aes-gcm-nopadding.encryption-key") String secretKey) {
+                      @ConfigProperty(name = "jwt.expiration-time") long expirationTime,
+                      @ConfigProperty(name = "mp.jwt.sign.key-location") String privateKeyLocation,
+                      @ConfigProperty(name = "mp.jwt.verify.publickey.location") String publicKeyLocation) {
         this.issuer = issuer;
         this.audience = audience;
         this.expirationTime = expirationTime;
-        this.secretKey = secretKey;
+        this.privateKeyLocation = privateKeyLocation;
+        this.publicKeyLocation = publicKeyLocation;
+
     }
 
     @PostConstruct
-    public void init() {
-        byte[] keyBytes = Base64.getDecoder().decode(secretKey);
-        key = Keys.hmacShaKeyFor(keyBytes);
+    public void init() throws Exception {
+        byte[] privateKeyBytes = Files.readAllBytes(Paths.get(privateKeyLocation));
+        byte[] publicKeyBytes = Files.readAllBytes(Paths.get(publicKeyLocation));
+
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+
+        // Pentru cheia privată
+        System.out.println("cheia privata");
+        PKCS8EncodedKeySpec privateKeySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
+        privateKey = keyFactory.generatePrivate(privateKeySpec);
+
+        // Pentru cheia publică
+        System.out.println("cheia publica");
+        X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(publicKeyBytes);
+        publicKey = keyFactory.generatePublic(publicKeySpec);
     }
 
+
     public String generateJwtToken(AccountEntity account) {
-        Claims claims = Jwts.claims(); // Creează o instanță de Claims
+        Claims claims = Jwts.claims();
         claims.setSubject(account.getEmail());
         claims.put("roles", List.of(account.getRole().toString()));
 
@@ -51,17 +74,19 @@ public class JwtService {
                 .setAudience(audience)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime * 1000))
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(privateKey, SignatureAlgorithm.RS256)
                 .compact();
     }
 
+
     public Claims verifyJwtToken(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(publicKey)
                 .requireIssuer(issuer)
                 .requireAudience(audience)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
     }
+
 }

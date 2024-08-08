@@ -30,6 +30,7 @@
     </dependencyManagement>
 
     <dependencies>
+
         <!-- Secret Key -->
         <dependency>
             <groupId>io.smallrye.config</groupId>
