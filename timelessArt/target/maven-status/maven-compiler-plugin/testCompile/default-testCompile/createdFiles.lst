@@ -1,2 +1,2 @@
-validation/EmailValidatorTest.class
-validation/PasswordValidatorTest.class
+validation\PasswordValidatorTest.class
+validation\EmailValidatorTest.class

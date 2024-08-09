@@ -25,6 +25,7 @@ public class JwtFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext requestContext) throws IOException {
         String path = requestContext.getUriInfo().getPath();
 
+        // Allow unauthenticated access to specific endpoints
         if (path.equals("/api/accounts/login") || path.equals("/api/accounts/create")) {
             return;
         }
@@ -33,6 +34,7 @@ public class JwtFilter implements ContainerRequestFilter {
 
         LOGGER.info("Authorization Header: " + authorizationHeader);
 
+        // Check if the Authorization header is missing or invalid
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
             LOGGER.warning("Missing or invalid Authorization header");
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
@@ -42,10 +44,12 @@ public class JwtFilter implements ContainerRequestFilter {
         String token = authorizationHeader.substring("Bearer".length()).trim();
 
         try {
+            // Verify the JWT token
             Claims claims = jwtService.verifyJwtToken(token);
             JwtSecurityContext securityContext = new JwtSecurityContext(claims);
             requestContext.setSecurityContext(securityContext);
         } catch (Exception e) {
+            // Handle token verification failure
             LOGGER.severe("Token verification failed: " + e.getMessage());
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }

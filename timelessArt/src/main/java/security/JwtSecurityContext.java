@@ -1,14 +1,14 @@
 package security;
-
 import io.jsonwebtoken.Claims;
-
 import jakarta.ws.rs.core.SecurityContext;
 import java.security.Principal;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class JwtSecurityContext implements SecurityContext {
 
     private final Claims claims;
+    private static final Logger LOGGER = Logger.getLogger(JwtSecurityContext.class.getName());
 
     public JwtSecurityContext(Claims claims) {
         this.claims = claims;
@@ -21,16 +21,10 @@ public class JwtSecurityContext implements SecurityContext {
 
     @Override
     public boolean isUserInRole(String role) {
-        List<String> roles = claims.get("roles", List.class);
-       if(roles.contains(role)){
-           System.out.println(true);
-           return true;
-       }
-       else {
-           System.out.println(false);
-           return false;
-       }
+        String userRole = (String) claims.get("roles");
+        return role.equals(userRole);
     }
+
 
     @Override
     public boolean isSecure() {

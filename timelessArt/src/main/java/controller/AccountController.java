@@ -64,8 +64,9 @@ public class AccountController {
     @RolesAllowed("ADMIN")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
-            List<AccountEntity> accounts = accountService.getAllAccounts();
-            return Response.status(Response.Status.OK).entity(accounts).build();
+        List<AccountEntity> accounts = accountService.getAllAccounts();
+        return Response.status(Response.Status.OK).entity(accounts).build();
     }
+
 
 }
