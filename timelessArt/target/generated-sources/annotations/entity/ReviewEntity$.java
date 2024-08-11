@@ -26,12 +26,12 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "client".
+     * This Field corresponds to the {@link ReviewEntity} field "id".
      */
-    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
+    public static final IntField<ReviewEntity> id = IntField.create(
         ReviewEntity.class,
-        "client",
-        ReviewEntity::getClient,
+        "id",
+        ReviewEntity::getId,
         false
     );
     /**
@@ -44,30 +44,30 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
-     */
-    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
-        ReviewEntity.class,
-        "reviewDate",
-        ReviewEntity::getReviewDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ReviewEntity} field "id".
-     */
-    public static final IntField<ReviewEntity> id = IntField.create(
-        ReviewEntity.class,
-        "id",
-        ReviewEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ReviewEntity} field "reviewText".
      */
     public static final StringField<ReviewEntity> reviewText = StringField.create(
         ReviewEntity.class,
         "reviewText",
         ReviewEntity::getReviewText,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ReviewEntity} field "client".
+     */
+    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
+        ReviewEntity.class,
+        "client",
+        ReviewEntity::getClient,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     */
+    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+        ReviewEntity.class,
+        "reviewDate",
+        ReviewEntity::getReviewDate,
         false
     );
 }

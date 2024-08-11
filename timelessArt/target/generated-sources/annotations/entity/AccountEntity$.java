@@ -14,21 +14,21 @@ import com.speedment.jpastreamer.field.StringField;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
-     */
-    public static final StringField<AccountEntity> email = StringField.create(
-        AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "id".
      */
     public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
         AccountEntity.class,
         "id",
         AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "token".
+     */
+    public static final StringField<AccountEntity> token = StringField.create(
+        AccountEntity.class,
+        "token",
+        AccountEntity::getToken,
         false
     );
     /**
@@ -41,12 +41,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "token".
+     * This Field corresponds to the {@link AccountEntity} field "email".
      */
-    public static final StringField<AccountEntity> token = StringField.create(
+    public static final StringField<AccountEntity> email = StringField.create(
         AccountEntity.class,
-        "token",
-        AccountEntity::getToken,
+        "email",
+        AccountEntity::getEmail,
         false
     );
     /**
