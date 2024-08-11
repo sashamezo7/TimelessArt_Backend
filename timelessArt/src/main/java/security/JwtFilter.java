@@ -26,7 +26,7 @@ public class JwtFilter implements ContainerRequestFilter {
         String path = requestContext.getUriInfo().getPath();
 
         // Allow unauthenticated access to specific endpoints
-        if (path.equals("/api/accounts/login") || path.equals("/api/accounts/create")) {
+        if (path.equals("/accounts/login") || path.equals("/accounts/create")) {
             return;
         }
 
@@ -41,7 +41,7 @@ public class JwtFilter implements ContainerRequestFilter {
             return;
         }
 
-        String token = authorizationHeader.substring("Bearer".length()).trim();
+        String token = authorizationHeader.substring("Bearer ".length()).trim();
 
         try {
             // Verify the JWT token

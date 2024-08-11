@@ -1,8 +1,8 @@
 package security;
 import io.jsonwebtoken.Claims;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.core.SecurityContext;
 import java.security.Principal;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class JwtSecurityContext implements SecurityContext {
@@ -21,9 +21,21 @@ public class JwtSecurityContext implements SecurityContext {
 
     @Override
     public boolean isUserInRole(String role) {
-        String userRole = (String) claims.get("roles");
-        return role.equals(userRole);
+        String userRoles = (String) claims.get("roles");
+
+        // Logare pentru verificarea rolurilor
+        LOGGER.info("Checking role: " + role);
+        LOGGER.info("User roles from JWT: " + userRoles);
+
+        boolean result = userRoles != null && userRoles.equals(role);
+
+        // Logare pentru a vedea rezultatul
+        LOGGER.info("Is user in role '" + role + "': " + result);
+
+        return result;
     }
+
+
 
 
     @Override

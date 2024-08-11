@@ -22,6 +22,7 @@ public class AccountService {
     private AccountRepo accountRepo;
     @Inject
     private JwtService jwtService;
+
     @Transactional
     public AccountEntity createAccount(String email, String password) {
         AccountEntity account1 = accountRepo.findByEmail(email);
@@ -60,10 +61,10 @@ public class AccountService {
     @Transactional
     public String authenticate(String email, String password) {
         if (!EmailValidator.isValid(email)) {
-            throw new IllegalArgumentException("Email not valid");
+            throw new InvalidCredentialsException("Email not valid");
         }
         if (!PasswordValidator.isValid(password)) {
-            throw new IllegalArgumentException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
+            throw new InvalidCredentialsException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
         }
         AccountEntity account = accountRepo.findByEmail(email);
         if (account == null) {
@@ -79,7 +80,6 @@ public class AccountService {
             throw new InvalidCredentialsException("Account is not verified");
         }
         return jwtService.generateJwtToken(account);
-
 
     }
     private String generateToken() {

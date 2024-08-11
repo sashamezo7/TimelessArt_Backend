@@ -30,6 +30,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-security</artifactId>
+        </dependency>
+
 
         <!-- Secret Key -->
         <dependency>

@@ -5,10 +5,7 @@ import DTO.AuthenticationRequest;
 import DTO.AuthenticationResponse;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
-import jakarta.annotation.security.RolesAllowed;
 
-
-import security.JwtFilter;
 import service.AccountService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -17,7 +14,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Path("/api/accounts")
+@Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AccountController {
@@ -25,8 +22,8 @@ public class AccountController {
     @Inject
     AccountService accountService;
 
-    @Inject
-    JwtFilter jwtFilter;
+
+
     @POST
     @Path("/create")
     public Response createAccount(AccountRequest request) {
@@ -60,12 +57,12 @@ public class AccountController {
     }
 
     @GET
-    @Path("/all/accounts")
-    @RolesAllowed("ADMIN")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
         List<AccountEntity> accounts = accountService.getAllAccounts();
-        return Response.status(Response.Status.OK).entity(accounts).build();
+            return Response.status(Response.Status.OK).entity(accounts).build();
+
     }
 
 
