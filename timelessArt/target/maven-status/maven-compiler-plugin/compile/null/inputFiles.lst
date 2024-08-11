@@ -1,6 +1,7 @@
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/AccountRequest.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/AuthenticationRequest.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/AuthenticationResponse.java
+/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/FilePermissionChecker.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/controller/AccountController.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/entity/AccountEntity.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/entity/ArtistEntity.java
@@ -19,6 +20,9 @@
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/ExhibitionRepo.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/OrderRepo.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/ReviewRepo.java
+/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/security/JwtFilter.java
+/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/security/JwtSecurityContext.java
+/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/security/JwtService.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/service/AccountService.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/validation/EmailValidator.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/validation/PasswordValidator.java

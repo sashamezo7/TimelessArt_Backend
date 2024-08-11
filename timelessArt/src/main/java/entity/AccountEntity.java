@@ -24,6 +24,11 @@ public class AccountEntity {
     private String token;
     private String keyArtist;
     private boolean validAccount;
-
+    public enum Role {
+        ARTIST, CLIENT, ADMIN
+    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 
 }

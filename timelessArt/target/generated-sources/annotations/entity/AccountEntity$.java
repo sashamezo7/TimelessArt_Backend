@@ -2,7 +2,9 @@ package entity;
 
 import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
+import com.speedment.jpastreamer.field.EnumField;
 import com.speedment.jpastreamer.field.StringField;
+import entity.AccountEntity.Role;
 
 /**
  * The generated base for entity {@link AccountEntity} representing entities of
@@ -14,12 +16,21 @@ import com.speedment.jpastreamer.field.StringField;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
+     * This Field corresponds to the {@link AccountEntity} field "role".
      */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+    public static final EnumField<AccountEntity, Role> role = EnumField.create(
         AccountEntity.class,
-        "id",
-        AccountEntity::getId,
+        "role",
+        AccountEntity::getRole,
+        Role.class
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     */
+    public static final StringField<AccountEntity> keyArtist = StringField.create(
+        AccountEntity.class,
+        "keyArtist",
+        AccountEntity::getKeyArtist,
         false
     );
     /**
@@ -32,12 +43,21 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
-    public static final StringField<AccountEntity> keyArtist = StringField.create(
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
         AccountEntity.class,
-        "keyArtist",
-        AccountEntity::getKeyArtist,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
         false
     );
     /**
@@ -47,15 +67,6 @@ public final class AccountEntity$ {
         AccountEntity.class,
         "email",
         AccountEntity::getEmail,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
         false
     );
     /**
