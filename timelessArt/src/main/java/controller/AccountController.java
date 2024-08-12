@@ -57,12 +57,11 @@ public class AccountController {
     }
 
     @GET
-    @Path("/all")
+    @Path("admin/all")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
         List<AccountEntity> accounts = accountService.getAllAccounts();
             return Response.status(Response.Status.OK).entity(accounts).build();
-
     }
 
 

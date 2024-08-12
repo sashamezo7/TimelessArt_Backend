@@ -19,12 +19,21 @@ import java.util.List;
 public final class ExhibitionEntity$ {
     
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "startDate".
+     * This Field corresponds to the {@link ExhibitionEntity} field "artworks".
      */
-    public static final ComparableField<ExhibitionEntity, Date> startDate = ComparableField.create(
+    public static final ReferenceField<ExhibitionEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
         ExhibitionEntity.class,
-        "startDate",
-        ExhibitionEntity::getStartDate,
+        "artworks",
+        ExhibitionEntity::getArtworks,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "location".
+     */
+    public static final StringField<ExhibitionEntity> location = StringField.create(
+        ExhibitionEntity.class,
+        "location",
+        ExhibitionEntity::getLocation,
         false
     );
     /**
@@ -37,15 +46,6 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "status".
-     */
-    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
-        ExhibitionEntity.class,
-        "status",
-        ExhibitionEntity::getStatus,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ExhibitionEntity} field "artists".
      */
     public static final ReferenceField<ExhibitionEntity, List<ArtistEntity>> artists = ReferenceField.create(
@@ -55,12 +55,22 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "location".
+     * This Field corresponds to the {@link ExhibitionEntity} field "id".
      */
-    public static final StringField<ExhibitionEntity> location = StringField.create(
+    public static final IntField<ExhibitionEntity> id = IntField.create(
         ExhibitionEntity.class,
-        "location",
-        ExhibitionEntity::getLocation,
+        "id",
+        ExhibitionEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field
+     * "description".
+     */
+    public static final StringField<ExhibitionEntity> description = StringField.create(
+        ExhibitionEntity.class,
+        "description",
+        ExhibitionEntity::getDescription,
         false
     );
     /**
@@ -83,31 +93,21 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field
-     * "description".
+     * This Field corresponds to the {@link ExhibitionEntity} field "startDate".
      */
-    public static final StringField<ExhibitionEntity> description = StringField.create(
+    public static final ComparableField<ExhibitionEntity, Date> startDate = ComparableField.create(
         ExhibitionEntity.class,
-        "description",
-        ExhibitionEntity::getDescription,
+        "startDate",
+        ExhibitionEntity::getStartDate,
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "id".
+     * This Field corresponds to the {@link ExhibitionEntity} field "status".
      */
-    public static final IntField<ExhibitionEntity> id = IntField.create(
+    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
         ExhibitionEntity.class,
-        "id",
-        ExhibitionEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "artworks".
-     */
-    public static final ReferenceField<ExhibitionEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
-        ExhibitionEntity.class,
-        "artworks",
-        ExhibitionEntity::getArtworks,
+        "status",
+        ExhibitionEntity::getStatus,
         false
     );
 }

@@ -92,4 +92,10 @@ public class JwtService {
                 .parseClaimsJws(token)
                 .getBody();
     }
+    public boolean hasRole(String token, String role) {
+        Claims claims = verifyJwtToken(token);
+        String userRole = claims.get("roles", String.class);
+        return userRole != null && userRole.equals(role);
+    }
+
 }

@@ -12,6 +12,7 @@ entity/ArtworkEntity$.class
 entity/AccountEntity$Role.class
 entity/OrderEntity.class
 entity/AccountEntity.class
+security/JwtSecurityContext.class
 entity/VideoEntity$.class
 repo/ArtistRepo.class
 DTO/AuthenticationResponse.class
@@ -22,6 +23,7 @@ entity/ExhibitionEntity$.class
 entity/VideoEntity.class
 entity/ArtistEntity$artistType.class
 entity/ReviewEntity$ReviewEntityBuilder.class
+security/JwtFilter.class
 entity/AccountEntity$AccountEntityBuilder.class
 validation/PasswordValidator.class
 entity/ArtworkEntity.class
@@ -38,7 +40,6 @@ entity/ImageEntity$.class
 repo/ArtworkRepo.class
 entity/ArtworkEntity$typeArtwork.class
 entity/ReviewEntity.class
-FilePermissionChecker.class
 repo/ExhibitionRepo.class
 security/JwtService.class
 entity/ArtistEntity$ArtistEntityBuilder.class

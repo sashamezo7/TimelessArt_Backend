@@ -17,21 +17,30 @@ import java.sql.Timestamp;
 public final class ReviewEntity$ {
     
     /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     */
+    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+        ReviewEntity.class,
+        "reviewDate",
+        ReviewEntity::getReviewDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
+     */
+    public static final StringField<ReviewEntity> reviewText = StringField.create(
+        ReviewEntity.class,
+        "reviewText",
+        ReviewEntity::getReviewText,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ReviewEntity} field "rating".
      */
     public static final ComparableField<ReviewEntity, Integer> rating = ComparableField.create(
         ReviewEntity.class,
         "rating",
         ReviewEntity::getRating,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ReviewEntity} field "client".
-     */
-    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
-        ReviewEntity.class,
-        "client",
-        ReviewEntity::getClient,
         false
     );
     /**
@@ -44,15 +53,6 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
-     */
-    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
-        ReviewEntity.class,
-        "reviewDate",
-        ReviewEntity::getReviewDate,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ReviewEntity} field "id".
      */
     public static final IntField<ReviewEntity> id = IntField.create(
@@ -62,12 +62,12 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewText".
+     * This Field corresponds to the {@link ReviewEntity} field "client".
      */
-    public static final StringField<ReviewEntity> reviewText = StringField.create(
+    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
         ReviewEntity.class,
-        "reviewText",
-        ReviewEntity::getReviewText,
+        "client",
+        ReviewEntity::getClient,
         false
     );
 }
