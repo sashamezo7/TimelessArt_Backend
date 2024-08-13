@@ -22,12 +22,12 @@ import java.util.UUID;
 public class AccountService {
 
     @Inject
-    private AccountRepo accountRepo;
+    AccountRepo accountRepo;
 
     @Inject
     JwtService jwtService;
     @Inject
-    private EmailService emailService;
+    EmailService emailService;
 
     @Transactional
     public AccountEntity createAccount(String email, String password) {

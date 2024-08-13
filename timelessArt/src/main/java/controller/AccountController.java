@@ -3,10 +3,14 @@ package controller;
 import DTO.*;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
+import io.smallrye.common.annotation.Blocking;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.infrastructure.Infrastructure;
 import jakarta.annotation.security.RolesAllowed;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.jboss.resteasy.reactive.server.core.multipart.FormData;
 import service.AccountService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -103,15 +107,29 @@ public class AccountController {
     }
     @GET
     @Path("/send")
+    @Blocking
     public Response sendTestEmail() {
         try {
             emailTestService.sendTestEmail();
-            return Response.ok("Test email sent successfully!").build();
+            return Response.status(Response.Status.NO_CONTENT).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity("Failed to send test email: " + e.getMessage())
                     .build();
         }
+    }
+
+    @POST
+    @Path("/test/mail")
+    public Uni<Response> sendEmailAsync() {
+        return Uni.createFrom().item(() -> {
+                    emailTestService.sendTestEmail();
+                    return Response.status(Response.Status.NO_CONTENT).build();
+                })
+                .runSubscriptionOn(Infrastructure.getDefaultExecutor())
+                .onFailure().recoverWithItem(e -> Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Failed to send email: " + e.getMessage())
+                        .build());
     }
 }
 
