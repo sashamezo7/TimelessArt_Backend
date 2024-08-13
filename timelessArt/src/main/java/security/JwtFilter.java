@@ -25,8 +25,7 @@ public class JwtFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext requestContext) throws IOException {
         String path = requestContext.getUriInfo().getPath();
 
-        // Allow unauthenticated access to specific endpoints
-        if (path.equals("/accounts/login") || path.equals("/accounts/create")) {
+        if (path.equals("/accounts/login") || path.equals("/accounts/create") || path.equals("/accounts/request-password-reset")||path.equals("/accounts/reset-password")||path.equals("/accounts/send")) {
             return;
         }
 

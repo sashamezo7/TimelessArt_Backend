@@ -2,7 +2,6 @@ package entity;
 
 import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
-import com.speedment.jpastreamer.field.EnumField;
 import com.speedment.jpastreamer.field.IntField;
 import com.speedment.jpastreamer.field.ReferenceField;
 import com.speedment.jpastreamer.field.StringField;
@@ -22,22 +21,21 @@ import java.util.List;
 public final class ArtistEntity$ {
     
     /**
-     * This Field corresponds to the {@link ArtistEntity} field
-     * "profilePictureUrl".
+     * This Field corresponds to the {@link ArtistEntity} field "website".
      */
-    public static final StringField<ArtistEntity> profilePictureUrl = StringField.create(
+    public static final StringField<ArtistEntity> website = StringField.create(
         ArtistEntity.class,
-        "profilePictureUrl",
-        ArtistEntity::getProfilePictureUrl,
+        "website",
+        ArtistEntity::getWebsite,
         false
     );
     /**
-     * This Field corresponds to the {@link ArtistEntity} field "account".
+     * This Field corresponds to the {@link ArtistEntity} field "exhibitions".
      */
-    public static final ReferenceField<ArtistEntity, AccountEntity> account = ReferenceField.create(
+    public static final ReferenceField<ArtistEntity, List<ExhibitionEntity>> exhibitions = ReferenceField.create(
         ArtistEntity.class,
-        "account",
-        ArtistEntity::getAccount,
+        "exhibitions",
+        ArtistEntity::getExhibitions,
         false
     );
     /**
@@ -50,66 +48,21 @@ public final class ArtistEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ArtistEntity} field "id".
+     */
+    public static final IntField<ArtistEntity> id = IntField.create(
+        ArtistEntity.class,
+        "id",
+        ArtistEntity::getId,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ArtistEntity} field "city".
      */
     public static final StringField<ArtistEntity> city = StringField.create(
         ArtistEntity.class,
         "city",
         ArtistEntity::getCity,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "name".
-     */
-    public static final StringField<ArtistEntity> name = StringField.create(
-        ArtistEntity.class,
-        "name",
-        ArtistEntity::getName,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "website".
-     */
-    public static final StringField<ArtistEntity> website = StringField.create(
-        ArtistEntity.class,
-        "website",
-        ArtistEntity::getWebsite,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "phone".
-     */
-    public static final StringField<ArtistEntity> phone = StringField.create(
-        ArtistEntity.class,
-        "phone",
-        ArtistEntity::getPhone,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "artworks".
-     */
-    public static final ReferenceField<ArtistEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
-        ArtistEntity.class,
-        "artworks",
-        ArtistEntity::getArtworks,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "videos".
-     */
-    public static final ReferenceField<ArtistEntity, List<VideoEntity>> videos = ReferenceField.create(
-        ArtistEntity.class,
-        "videos",
-        ArtistEntity::getVideos,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtistEntity} field "exhibitions".
-     */
-    public static final ReferenceField<ArtistEntity, List<ExhibitionEntity>> exhibitions = ReferenceField.create(
-        ArtistEntity.class,
-        "exhibitions",
-        ArtistEntity::getExhibitions,
         false
     );
     /**
@@ -123,12 +76,30 @@ public final class ArtistEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtistEntity} field "biography".
+     * This Field corresponds to the {@link ArtistEntity} field "birthDate".
      */
-    public static final StringField<ArtistEntity> biography = StringField.create(
+    public static final ComparableField<ArtistEntity, Date> birthDate = ComparableField.create(
         ArtistEntity.class,
-        "biography",
-        ArtistEntity::getBiography,
+        "birthDate",
+        ArtistEntity::getBirthDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtistEntity} field "phone".
+     */
+    public static final StringField<ArtistEntity> phone = StringField.create(
+        ArtistEntity.class,
+        "phone",
+        ArtistEntity::getPhone,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtistEntity} field "name".
+     */
+    public static final StringField<ArtistEntity> name = StringField.create(
+        ArtistEntity.class,
+        "name",
+        ArtistEntity::getName,
         false
     );
     /**
@@ -141,30 +112,40 @@ public final class ArtistEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtistEntity} field "id".
+     * This Field corresponds to the {@link ArtistEntity} field "account".
      */
-    public static final IntField<ArtistEntity> id = IntField.create(
+    public static final ReferenceField<ArtistEntity, AccountEntity> account = ReferenceField.create(
         ArtistEntity.class,
-        "id",
-        ArtistEntity::getId,
+        "account",
+        ArtistEntity::getAccount,
         false
     );
     /**
-     * This Field corresponds to the {@link ArtistEntity} field "typeArtist".
+     * This Field corresponds to the {@link ArtistEntity} field "biography".
      */
-    public static final EnumField<ArtistEntity, artistType> typeArtist = EnumField.create(
+    public static final StringField<ArtistEntity> biography = StringField.create(
         ArtistEntity.class,
-        "typeArtist",
-        ArtistEntity::getTypeArtist,
-        artistType.class
+        "biography",
+        ArtistEntity::getBiography,
+        false
     );
     /**
-     * This Field corresponds to the {@link ArtistEntity} field "birthDate".
+     * This Field corresponds to the {@link ArtistEntity} field
+     * "profilePictureUrl".
      */
-    public static final ComparableField<ArtistEntity, Date> birthDate = ComparableField.create(
+    public static final StringField<ArtistEntity> profilePictureUrl = StringField.create(
         ArtistEntity.class,
-        "birthDate",
-        ArtistEntity::getBirthDate,
+        "profilePictureUrl",
+        ArtistEntity::getProfilePictureUrl,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtistEntity} field "artworks".
+     */
+    public static final ReferenceField<ArtistEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
+        ArtistEntity.class,
+        "artworks",
+        ArtistEntity::getArtworks,
         false
     );
     /**
@@ -174,6 +155,24 @@ public final class ArtistEntity$ {
         ArtistEntity.class,
         "firstName",
         ArtistEntity::getFirstName,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtistEntity} field "typeArtist".
+     */
+    public static final ComparableField<ArtistEntity, artistType> typeArtist = ComparableField.create(
+        ArtistEntity.class,
+        "typeArtist",
+        ArtistEntity::getTypeArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtistEntity} field "videos".
+     */
+    public static final ReferenceField<ArtistEntity, List<VideoEntity>> videos = ReferenceField.create(
+        ArtistEntity.class,
+        "videos",
+        ArtistEntity::getVideos,
         false
     );
 }

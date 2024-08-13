@@ -1,18 +1,20 @@
 package controller;
 
-import DTO.AccountRequest;
-import DTO.AuthenticationRequest;
-import DTO.AuthenticationResponse;
+import DTO.*;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import service.AccountService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import service.SimpleEmailTest;
 
 import java.util.List;
+import java.util.Map;
 
 @Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)
@@ -21,7 +23,8 @@ public class AccountController {
 
     @Inject
     AccountService accountService;
-
+    @Inject
+    SimpleEmailTest emailTestService;
 
 
     @POST
@@ -66,4 +69,46 @@ public class AccountController {
     }
 
 
+    @POST
+    @Path("/request-password-reset")
+    @Operation(summary = "Request password reset", description = "Sends a password reset link to the specified email address.")
+    @APIResponse(responseCode = "204", description = "Password reset email sent.")
+    @APIResponse(responseCode = "400", description = "Invalid email address.")
+    public Response requestPasswordReset(EmailRequest request) {
+        String email = request.getEmail();
+        try {
+            accountService.requestPasswordReset(email);
+            return Response.noContent().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("{\"error\": \"" + e.getMessage() + "\"}")
+                    .build();
+        }
+    }
+
+    @POST
+    @Path("/reset-password")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response resetPassword(PasswordResetRequest request) {
+        try {
+            accountService.resetPassword(request.getToken(), request.getNewPassword());
+            return Response.ok().entity("Password has been reset successfully").build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+    }
+    @GET
+    @Path("/send")
+    public Response sendTestEmail() {
+        try {
+            emailTestService.sendTestEmail();
+            return Response.ok("Test email sent successfully!").build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to send test email: " + e.getMessage())
+                    .build();
+        }
+    }
 }
+

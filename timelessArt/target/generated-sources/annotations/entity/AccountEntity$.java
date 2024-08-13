@@ -2,9 +2,10 @@ package entity;
 
 import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
-import com.speedment.jpastreamer.field.EnumField;
 import com.speedment.jpastreamer.field.StringField;
 import entity.AccountEntity.Role;
+
+import java.time.LocalDateTime;
 
 /**
  * The generated base for entity {@link AccountEntity} representing entities of
@@ -16,13 +17,40 @@ import entity.AccountEntity.Role;
 public final class AccountEntity$ {
     
     /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "password".
+     */
+    public static final StringField<AccountEntity> password = StringField.create(
+        AccountEntity.class,
+        "password",
+        AccountEntity::getPassword,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
+     */
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
+        AccountEntity.class,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
      * This Field corresponds to the {@link AccountEntity} field "role".
      */
-    public static final EnumField<AccountEntity, Role> role = EnumField.create(
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
         AccountEntity.class,
         "role",
         AccountEntity::getRole,
-        Role.class
+        false
     );
     /**
      * This Field corresponds to the {@link AccountEntity} field "keyArtist".
@@ -43,24 +71,6 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
-     */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
-        AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "email".
      */
     public static final StringField<AccountEntity> email = StringField.create(
@@ -70,12 +80,13 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
+     * This Field corresponds to the {@link AccountEntity} field
+     * "resetPasswordExpires".
      */
-    public static final StringField<AccountEntity> password = StringField.create(
+    public static final ComparableField<AccountEntity, LocalDateTime> resetPasswordExpires = ComparableField.create(
         AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
+        "resetPasswordExpires",
+        AccountEntity::getResetPasswordExpires,
         false
     );
 }

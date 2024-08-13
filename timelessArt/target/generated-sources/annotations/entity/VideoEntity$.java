@@ -14,21 +14,21 @@ import com.speedment.jpastreamer.field.StringField;
 public final class VideoEntity$ {
     
     /**
-     * This Field corresponds to the {@link VideoEntity} field "id".
-     */
-    public static final IntField<VideoEntity> id = IntField.create(
-        VideoEntity.class,
-        "id",
-        VideoEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link VideoEntity} field "artist".
      */
     public static final ReferenceField<VideoEntity, ArtistEntity> artist = ReferenceField.create(
         VideoEntity.class,
         "artist",
         VideoEntity::getArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link VideoEntity} field "id".
+     */
+    public static final IntField<VideoEntity> id = IntField.create(
+        VideoEntity.class,
+        "id",
+        VideoEntity::getId,
         false
     );
     /**

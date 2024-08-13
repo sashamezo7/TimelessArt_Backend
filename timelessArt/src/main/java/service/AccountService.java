@@ -1,6 +1,7 @@
 package service;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
 import security.JwtService;
 import validation.EmailValidator;
 import entity.AccountEntity;
@@ -11,8 +12,10 @@ import jakarta.transaction.Transactional;
 import repo.AccountRepo;
 import validation.PasswordValidator;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+
 
 
 @ApplicationScoped
@@ -22,6 +25,8 @@ public class AccountService {
     private AccountRepo accountRepo;
     @Inject
     private JwtService jwtService;
+    @Inject
+    private EmailService emailService;
 
     @Transactional
     public AccountEntity createAccount(String email, String password) {
@@ -39,7 +44,6 @@ public class AccountService {
         AccountEntity account = AccountEntity.builder()
                 .email(email)
                 .password(bcryptHashString)
-                .token(generateToken())
                 .validAccount(true)
                 .role(AccountEntity.Role.CLIENT)
                 .build();
@@ -82,6 +86,38 @@ public class AccountService {
         return jwtService.generateJwtToken(account);
 
     }
+
+    @Transactional
+    public void requestPasswordReset(String email) {
+        AccountEntity account = accountRepo.findByEmail(email);
+        if (account == null) {
+            throw new IllegalArgumentException("Email not found");
+        }
+        String token = generateToken();
+        account.setToken(token);
+        account.setResetPasswordExpires(LocalDateTime.now().plusHours(1));
+        accountRepo.save(account);
+
+        String resetLink = "https://example.com/reset-password?token=" + token;
+
+        emailService.sendPasswordResetEmail(email, resetLink);
+    }
+
+    @Transactional
+    public void resetPassword(String token, String newPassword) {
+        AccountEntity account = accountRepo.findByToken(token);
+        if (account == null || account.getResetPasswordExpires().isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("Invalid or expired token");
+        }
+
+        account.setPassword(BCrypt.withDefaults().hashToString(12, newPassword.toCharArray()));
+        account.setToken(null);
+        account.setResetPasswordExpires(null);
+        accountRepo.save(account);
+    }
+
+
+
     private String generateToken() {
         return UUID.randomUUID().toString();
     }
