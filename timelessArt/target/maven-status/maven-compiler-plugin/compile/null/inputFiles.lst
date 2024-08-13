@@ -19,8 +19,6 @@
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/ExhibitionRepo.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/OrderRepo.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/repo/ReviewRepo.java
-/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/security/JwtFilter.java
-/Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/security/JwtSecurityContext.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/service/AccountService.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/service/JwtService.java
 /Users/sasamezo/Documents/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/validation/EmailValidator.java

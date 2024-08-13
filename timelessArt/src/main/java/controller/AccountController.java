@@ -19,12 +19,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
-@Tag(name = "Account Controller", description = "Operations related to accounts")
-@SecurityScheme(securitySchemeName = "Authorization",
-        description = "JWT Bearer Token",
-        type = SecuritySchemeType.HTTP,
-        scheme = "bearer",
-        bearerFormat = "JWT")
+
 @Path("/api/accounts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -65,8 +60,7 @@ public class AccountController {
     }
 
     @GET
-    @RolesAllowed("CLIENT")
-    @SecurityRequirement(name = "Authorization")
+    @RolesAllowed("ADMIN")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
         List<AccountEntity> accounts = accountService.getAllAccounts();

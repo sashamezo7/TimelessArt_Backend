@@ -82,7 +82,7 @@ public class AccountService {
         if (!account.isValidAccount()) {
             throw new InvalidCredentialsException("Account is not verified");
         }
-        return jwtService.generateJwtToken(account.getEmail(), List.of("ROLE_USER"));
+        return jwtService.generateJwtToken(account);
 
 
     }

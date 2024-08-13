@@ -20,24 +20,6 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
-     * This Field corresponds to the {@link OrderEntity} field "updateDate".
-     */
-    public static final ComparableField<OrderEntity, Timestamp> updateDate = ComparableField.create(
-        OrderEntity.class,
-        "updateDate",
-        OrderEntity::getUpdateDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "orderDate".
-     */
-    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
-        OrderEntity.class,
-        "orderDate",
-        OrderEntity::getOrderDate,
-        false
-    );
-    /**
      * This Field corresponds to the {@link OrderEntity} field "client".
      */
     public static final ReferenceField<OrderEntity, ClientsEntity> client = ReferenceField.create(
@@ -53,6 +35,24 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "status",
         OrderEntity::getStatus,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "orderDate".
+     */
+    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
+        OrderEntity.class,
+        "orderDate",
+        OrderEntity::getOrderDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "artworks".
+     */
+    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
+        OrderEntity.class,
+        "artworks",
+        OrderEntity::getArtworks,
         false
     );
     /**
@@ -74,12 +74,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "artworks".
+     * This Field corresponds to the {@link OrderEntity} field "updateDate".
      */
-    public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
+    public static final ComparableField<OrderEntity, Timestamp> updateDate = ComparableField.create(
         OrderEntity.class,
-        "artworks",
-        OrderEntity::getArtworks,
+        "updateDate",
+        OrderEntity::getUpdateDate,
         false
     );
 }

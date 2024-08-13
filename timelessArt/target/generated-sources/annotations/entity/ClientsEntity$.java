@@ -19,12 +19,21 @@ import java.util.List;
 public final class ClientsEntity$ {
     
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "postalCode".
+     * This Field corresponds to the {@link ClientsEntity} field "orders".
      */
-    public static final StringField<ClientsEntity> postalCode = StringField.create(
+    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
         ClientsEntity.class,
-        "postalCode",
-        ClientsEntity::getPostalCode,
+        "orders",
+        ClientsEntity::getOrders,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "birthDate".
+     */
+    public static final ComparableField<ClientsEntity, Date> birthDate = ComparableField.create(
+        ClientsEntity.class,
+        "birthDate",
+        ClientsEntity::getBirthDate,
         false
     );
     /**
@@ -46,30 +55,12 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "country".
+     * This Field corresponds to the {@link ClientsEntity} field "firstName".
      */
-    public static final StringField<ClientsEntity> country = StringField.create(
+    public static final StringField<ClientsEntity> firstName = StringField.create(
         ClientsEntity.class,
-        "country",
-        ClientsEntity::getCountry,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "city".
-     */
-    public static final StringField<ClientsEntity> city = StringField.create(
-        ClientsEntity.class,
-        "city",
-        ClientsEntity::getCity,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "orders".
-     */
-    public static final ReferenceField<ClientsEntity, List<OrderEntity>> orders = ReferenceField.create(
-        ClientsEntity.class,
-        "orders",
-        ClientsEntity::getOrders,
+        "firstName",
+        ClientsEntity::getFirstName,
         false
     );
     /**
@@ -79,24 +70,6 @@ public final class ClientsEntity$ {
         ClientsEntity.class,
         "account",
         ClientsEntity::getAccount,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "id".
-     */
-    public static final IntField<ClientsEntity> id = IntField.create(
-        ClientsEntity.class,
-        "id",
-        ClientsEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ClientsEntity} field "reviews".
-     */
-    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
-        ClientsEntity.class,
-        "reviews",
-        ClientsEntity::getReviews,
         false
     );
     /**
@@ -110,12 +83,21 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "firstName".
+     * This Field corresponds to the {@link ClientsEntity} field "reviews".
      */
-    public static final StringField<ClientsEntity> firstName = StringField.create(
+    public static final ReferenceField<ClientsEntity, List<ReviewEntity>> reviews = ReferenceField.create(
         ClientsEntity.class,
-        "firstName",
-        ClientsEntity::getFirstName,
+        "reviews",
+        ClientsEntity::getReviews,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "country".
+     */
+    public static final StringField<ClientsEntity> country = StringField.create(
+        ClientsEntity.class,
+        "country",
+        ClientsEntity::getCountry,
         false
     );
     /**
@@ -128,12 +110,30 @@ public final class ClientsEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ClientsEntity} field "birthDate".
+     * This Field corresponds to the {@link ClientsEntity} field "city".
      */
-    public static final ComparableField<ClientsEntity, Date> birthDate = ComparableField.create(
+    public static final StringField<ClientsEntity> city = StringField.create(
         ClientsEntity.class,
-        "birthDate",
-        ClientsEntity::getBirthDate,
+        "city",
+        ClientsEntity::getCity,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "id".
+     */
+    public static final IntField<ClientsEntity> id = IntField.create(
+        ClientsEntity.class,
+        "id",
+        ClientsEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ClientsEntity} field "postalCode".
+     */
+    public static final StringField<ClientsEntity> postalCode = StringField.create(
+        ClientsEntity.class,
+        "postalCode",
+        ClientsEntity::getPostalCode,
         false
     );
 }

@@ -17,15 +17,6 @@ import java.sql.Timestamp;
 public final class ReviewEntity$ {
     
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
-     */
-    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
-        ReviewEntity.class,
-        "reviewDate",
-        ReviewEntity::getReviewDate,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ReviewEntity} field "rating".
      */
     public static final ComparableField<ReviewEntity, Integer> rating = ComparableField.create(
@@ -59,6 +50,15 @@ public final class ReviewEntity$ {
         ReviewEntity.class,
         "client",
         ReviewEntity::getClient,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     */
+    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+        ReviewEntity.class,
+        "reviewDate",
+        ReviewEntity::getReviewDate,
         false
     );
     /**
