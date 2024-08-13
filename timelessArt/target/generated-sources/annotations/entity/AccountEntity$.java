@@ -5,6 +5,8 @@ import com.speedment.jpastreamer.field.ComparableField;
 import com.speedment.jpastreamer.field.StringField;
 import entity.AccountEntity.Role;
 
+import java.time.LocalDateTime;
+
 /**
  * The generated base for entity {@link AccountEntity} representing entities of
  * the {@code accountEntity}-table in the database.
@@ -14,6 +16,52 @@ import entity.AccountEntity.Role;
  */
 public final class AccountEntity$ {
     
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "token".
+     */
+    public static final StringField<AccountEntity> token = StringField.create(
+        AccountEntity.class,
+        "token",
+        AccountEntity::getToken,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     */
+    public static final StringField<AccountEntity> keyArtist = StringField.create(
+        AccountEntity.class,
+        "keyArtist",
+        AccountEntity::getKeyArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field
+     * "resetPasswordExpires".
+     */
+    public static final ComparableField<AccountEntity, LocalDateTime> resetPasswordExpires = ComparableField.create(
+        AccountEntity.class,
+        "resetPasswordExpires",
+        AccountEntity::getResetPasswordExpires,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "email".
+     */
+    public static final StringField<AccountEntity> email = StringField.create(
+        AccountEntity.class,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
     /**
      * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
@@ -48,33 +96,6 @@ public final class AccountEntity$ {
         AccountEntity.class,
         "role",
         AccountEntity::getRole,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
-     */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
-        AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
-     */
-    public static final StringField<AccountEntity> email = StringField.create(
-        AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
-     */
-    public static final StringField<AccountEntity> keyArtist = StringField.create(
-        AccountEntity.class,
-        "keyArtist",
-        AccountEntity::getKeyArtist,
         false
     );
 }

@@ -20,6 +20,7 @@ public interface AccountRepo extends JpaRepository<AccountEntity,Long> {
     @Query("SELECT a FROM AccountEntity a WHERE a.validAccount = false")
     List<AccountEntity> findByValidAccountFalse();
 
+
     @Modifying
     @Transactional
     @Query("UPDATE AccountEntity a SET a.validAccount = :isValid WHERE a.id = :id")

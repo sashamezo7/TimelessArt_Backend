@@ -22,21 +22,30 @@ import java.util.List;
 public final class ArtworkEntity$ {
     
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "reviews".
+     * This Field corresponds to the {@link ArtworkEntity} field "video".
      */
-    public static final ReferenceField<ArtworkEntity, List<ReviewEntity>> reviews = ReferenceField.create(
+    public static final ReferenceField<ArtworkEntity, List<VideoEntity>> video = ReferenceField.create(
         ArtworkEntity.class,
-        "reviews",
-        ArtworkEntity::getReviews,
+        "video",
+        ArtworkEntity::getVideo,
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "exhibition".
+     * This Field corresponds to the {@link ArtworkEntity} field "artist".
      */
-    public static final ReferenceField<ArtworkEntity, ExhibitionEntity> exhibition = ReferenceField.create(
+    public static final ReferenceField<ArtworkEntity, ArtistEntity> artist = ReferenceField.create(
         ArtworkEntity.class,
-        "exhibition",
-        ArtworkEntity::getExhibition,
+        "artist",
+        ArtworkEntity::getArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artworkType".
+     */
+    public static final ComparableField<ArtworkEntity, typeArtwork> artworkType = ComparableField.create(
+        ArtworkEntity.class,
+        "artworkType",
+        ArtworkEntity::getArtworkType,
         false
     );
     /**
@@ -49,39 +58,12 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "id".
+     * This Field corresponds to the {@link ArtworkEntity} field "exhibition".
      */
-    public static final IntField<ArtworkEntity> id = IntField.create(
+    public static final ReferenceField<ArtworkEntity, ExhibitionEntity> exhibition = ReferenceField.create(
         ArtworkEntity.class,
-        "id",
-        ArtworkEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "image".
-     */
-    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
-        ArtworkEntity.class,
-        "image",
-        ArtworkEntity::getImage,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "video".
-     */
-    public static final ReferenceField<ArtworkEntity, List<VideoEntity>> video = ReferenceField.create(
-        ArtworkEntity.class,
-        "video",
-        ArtworkEntity::getVideo,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artworkDate".
-     */
-    public static final ComparableField<ArtworkEntity, Date> artworkDate = ComparableField.create(
-        ArtworkEntity.class,
-        "artworkDate",
-        ArtworkEntity::getArtworkDate,
+        "exhibition",
+        ArtworkEntity::getExhibition,
         false
     );
     /**
@@ -94,12 +76,75 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artworkType".
+     * This Field corresponds to the {@link ArtworkEntity} field "addingDate".
      */
-    public static final ComparableField<ArtworkEntity, typeArtwork> artworkType = ComparableField.create(
+    public static final ComparableField<ArtworkEntity, Timestamp> addingDate = ComparableField.create(
         ArtworkEntity.class,
-        "artworkType",
-        ArtworkEntity::getArtworkType,
+        "addingDate",
+        ArtworkEntity::getAddingDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "image".
+     */
+    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
+        ArtworkEntity.class,
+        "image",
+        ArtworkEntity::getImage,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "order".
+     */
+    public static final ReferenceField<ArtworkEntity, OrderEntity> order = ReferenceField.create(
+        ArtworkEntity.class,
+        "order",
+        ArtworkEntity::getOrder,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artworkDate".
+     */
+    public static final ComparableField<ArtworkEntity, Date> artworkDate = ComparableField.create(
+        ArtworkEntity.class,
+        "artworkDate",
+        ArtworkEntity::getArtworkDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "price".
+     */
+    public static final ComparableField<ArtworkEntity, BigDecimal> price = ComparableField.create(
+        ArtworkEntity.class,
+        "price",
+        ArtworkEntity::getPrice,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artworkDate".
+     */
+    public static final ComparableField<ArtworkEntity, Date> artworkDate = ComparableField.create(
+        ArtworkEntity.class,
+        "artworkDate",
+        ArtworkEntity::getArtworkDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "status".
+     */
+    public static final ComparableField<ArtworkEntity, artworkStatus> status = ComparableField.create(
+        ArtworkEntity.class,
+        "status",
+        ArtworkEntity::getStatus,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "id".
+     */
+    public static final IntField<ArtworkEntity> id = IntField.create(
+        ArtworkEntity.class,
+        "id",
+        ArtworkEntity::getId,
         false
     );
     /**

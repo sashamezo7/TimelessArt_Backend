@@ -2,7 +2,6 @@ package validation;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import validation.EmailValidator;
 
 public class EmailValidatorTest {
 
