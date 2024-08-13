@@ -17,39 +17,12 @@ import java.time.LocalDateTime;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
+     * This Field corresponds to the {@link AccountEntity} field "token".
      */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+    public static final StringField<AccountEntity> token = StringField.create(
         AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
-     */
-    public static final StringField<AccountEntity> password = StringField.create(
-        AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
-     */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
-        AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
+        "token",
+        AccountEntity::getToken,
         false
     );
     /**
@@ -62,12 +35,22 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "token".
+     * This Field corresponds to the {@link AccountEntity} field
+     * "resetPasswordExpires".
      */
-    public static final StringField<AccountEntity> token = StringField.create(
+    public static final ComparableField<AccountEntity, LocalDateTime> resetPasswordExpires = ComparableField.create(
         AccountEntity.class,
-        "token",
-        AccountEntity::getToken,
+        "resetPasswordExpires",
+        AccountEntity::getResetPasswordExpires,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
         false
     );
     /**
@@ -80,13 +63,30 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field
-     * "resetPasswordExpires".
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
-    public static final ComparableField<AccountEntity, LocalDateTime> resetPasswordExpires = ComparableField.create(
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
         AccountEntity.class,
-        "resetPasswordExpires",
-        AccountEntity::getResetPasswordExpires,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "password".
+     */
+    public static final StringField<AccountEntity> password = StringField.create(
+        AccountEntity.class,
+        "password",
+        AccountEntity::getPassword,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "role".
+     */
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
+        AccountEntity.class,
+        "role",
+        AccountEntity::getRole,
         false
     );
 }

@@ -19,22 +19,12 @@ import java.util.List;
 public final class ExhibitionEntity$ {
     
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field
-     * "description".
+     * This Field corresponds to the {@link ExhibitionEntity} field "artists".
      */
-    public static final StringField<ExhibitionEntity> description = StringField.create(
+    public static final ReferenceField<ExhibitionEntity, List<ArtistEntity>> artists = ReferenceField.create(
         ExhibitionEntity.class,
-        "description",
-        ExhibitionEntity::getDescription,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "name".
-     */
-    public static final StringField<ExhibitionEntity> name = StringField.create(
-        ExhibitionEntity.class,
-        "name",
-        ExhibitionEntity::getName,
+        "artists",
+        ExhibitionEntity::getArtists,
         false
     );
     /**
@@ -47,39 +37,21 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "endDate".
-     */
-    public static final ComparableField<ExhibitionEntity, Date> endDate = ComparableField.create(
-        ExhibitionEntity.class,
-        "endDate",
-        ExhibitionEntity::getEndDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "artworks".
-     */
-    public static final ReferenceField<ExhibitionEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
-        ExhibitionEntity.class,
-        "artworks",
-        ExhibitionEntity::getArtworks,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "artists".
-     */
-    public static final ReferenceField<ExhibitionEntity, List<ArtistEntity>> artists = ReferenceField.create(
-        ExhibitionEntity.class,
-        "artists",
-        ExhibitionEntity::getArtists,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ExhibitionEntity} field "location".
      */
     public static final StringField<ExhibitionEntity> location = StringField.create(
         ExhibitionEntity.class,
         "location",
         ExhibitionEntity::getLocation,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "status".
+     */
+    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
+        ExhibitionEntity.class,
+        "status",
+        ExhibitionEntity::getStatus,
         false
     );
     /**
@@ -102,12 +74,40 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "status".
+     * This Field corresponds to the {@link ExhibitionEntity} field "artworks".
      */
-    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
+    public static final ReferenceField<ExhibitionEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
         ExhibitionEntity.class,
-        "status",
-        ExhibitionEntity::getStatus,
+        "artworks",
+        ExhibitionEntity::getArtworks,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "name".
+     */
+    public static final StringField<ExhibitionEntity> name = StringField.create(
+        ExhibitionEntity.class,
+        "name",
+        ExhibitionEntity::getName,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "endDate".
+     */
+    public static final ComparableField<ExhibitionEntity, Date> endDate = ComparableField.create(
+        ExhibitionEntity.class,
+        "endDate",
+        ExhibitionEntity::getEndDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field
+     * "description".
+     */
+    public static final StringField<ExhibitionEntity> description = StringField.create(
+        ExhibitionEntity.class,
+        "description",
+        ExhibitionEntity::getDescription,
         false
     );
 }
