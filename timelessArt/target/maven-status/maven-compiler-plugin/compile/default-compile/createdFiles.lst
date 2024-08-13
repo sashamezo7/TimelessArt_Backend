@@ -4,12 +4,14 @@ entity/ArtistEntity.class
 entity/ArtworkEntity$ArtworkEntityBuilder.class
 entity/ExhibitionEntity.class
 entity/AccountEntity$.class
+service/ArtworkService.class
 repo/ReviewRepo.class
 repo/OrderRepo.class
 entity/OrderEntity$OrderEntityBuilder.class
 DTO/AuthenticationRequest.class
 entity/ArtworkEntity$.class
 entity/AccountEntity$Role.class
+DTO/EmailRequest.class
 entity/OrderEntity.class
 entity/AccountEntity.class
 entity/VideoEntity$.class
@@ -22,9 +24,11 @@ entity/ExhibitionEntity$.class
 entity/VideoEntity.class
 entity/ArtistEntity$artistType.class
 entity/ReviewEntity$ReviewEntityBuilder.class
+service/SimpleEmailTest.class
 entity/AccountEntity$AccountEntityBuilder.class
 validation/PasswordValidator.class
 entity/ArtworkEntity.class
+service/EmailService.class
 repo/ClientsRepo.class
 repo/AccountRepo.class
 entity/ReviewEntity$.class
@@ -40,6 +44,8 @@ repo/ArtworkRepo.class
 entity/ArtworkEntity$typeArtwork.class
 entity/ReviewEntity.class
 repo/ExhibitionRepo.class
+DTO/PasswordResetRequest.class
+security/JwtService.class
 entity/ArtistEntity$ArtistEntityBuilder.class
 entity/ExhibitionEntity$ExhibitionEntityBuilder.class
 service/AccountService.class

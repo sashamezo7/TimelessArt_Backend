@@ -2,7 +2,7 @@ package service;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import security.JwtService;
+import service.JwtService;
 import validation.EmailValidator;
 import entity.AccountEntity;
 import exception.InvalidCredentialsException;
@@ -23,8 +23,9 @@ public class AccountService {
 
     @Inject
     private AccountRepo accountRepo;
+
     @Inject
-    private JwtService jwtService;
+    JwtService jwtService;
     @Inject
     private EmailService emailService;
 

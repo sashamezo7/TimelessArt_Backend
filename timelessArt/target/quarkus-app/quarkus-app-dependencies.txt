@@ -9,8 +9,6 @@ com.fasterxml.jackson.core:jackson-databind::jar:2.17.2
 com.fasterxml.jackson.dataformat:jackson-dataformat-yaml::jar:2.17.2
 com.fasterxml:classmate::jar:1.7.0
 com.github.ben-manes.caffeine:caffeine::jar:3.1.5
-com.github.javafaker:javafaker::jar:1.0.2
-com.github.mifmif:generex::jar:1.0.2
 com.google.auto.service:auto-service-annotations::jar:1.0.1
 com.google.errorprone:error_prone_annotations::jar:2.28.0
 com.mysql:mysql-connector-j::jar:8.3.0
@@ -51,7 +49,7 @@ com.speedment.jpastreamer:termopoptimizer-standard::jar:3.0.4
 com.speedment.jpastreamer:termopoptimizer::jar:3.0.4
 com.speedment.runtime:runtime-compute::jar:3.2.10
 com.sun.istack:istack-commons-runtime::jar:4.1.2
-dk.brics.automaton:automaton::jar:1.11-8
+com.sun.mail:javax.mail::jar:1.6.2
 io.agroal:agroal-api::jar:2.4
 io.agroal:agroal-narayana::jar:2.4
 io.agroal:agroal-pool::jar:2.4
@@ -75,6 +73,7 @@ io.netty:netty-transport-native-unix-common::jar:4.1.108.Final
 io.netty:netty-transport::jar:4.1.108.Final
 io.quarkiverse.jpastreamer:quarkus-jpastreamer::jar:3.0.3.Final
 io.quarkus.arc:arc::jar:3.12.3
+io.quarkus.qute:qute-core::jar:3.12.3
 io.quarkus.resteasy.reactive:resteasy-reactive-common-types::jar:3.12.3
 io.quarkus.resteasy.reactive:resteasy-reactive-common::jar:3.12.3
 io.quarkus.resteasy.reactive:resteasy-reactive-jsonb::jar:3.12.3
@@ -99,11 +98,13 @@ io.quarkus:quarkus-hibernate-orm::jar:3.12.3
 io.quarkus:quarkus-jdbc-mysql::jar:3.12.3
 io.quarkus:quarkus-jsonb::jar:3.12.3
 io.quarkus:quarkus-jsonp::jar:3.12.3
+io.quarkus:quarkus-mailer::jar:3.12.3
 io.quarkus:quarkus-mutiny::jar:3.12.3
 io.quarkus:quarkus-narayana-jta::jar:3.12.3
 io.quarkus:quarkus-netty::jar:3.12.3
 io.quarkus:quarkus-panache-common::jar:3.12.3
 io.quarkus:quarkus-panache-hibernate-common::jar:3.12.3
+io.quarkus:quarkus-qute::jar:3.12.3
 io.quarkus:quarkus-rest-common::jar:3.12.3
 io.quarkus:quarkus-rest-jsonb-common::jar:3.12.3
 io.quarkus:quarkus-rest-jsonb::jar:3.12.3
@@ -150,6 +151,7 @@ io.smallrye.reactive:mutiny::jar:2.6.0
 io.smallrye.reactive:smallrye-mutiny-vertx-auth-common::jar:3.12.0
 io.smallrye.reactive:smallrye-mutiny-vertx-bridge-common::jar:3.12.0
 io.smallrye.reactive:smallrye-mutiny-vertx-core::jar:3.12.0
+io.smallrye.reactive:smallrye-mutiny-vertx-mail-client::jar:3.12.0
 io.smallrye.reactive:smallrye-mutiny-vertx-runtime::jar:3.12.0
 io.smallrye.reactive:smallrye-mutiny-vertx-uri-template::jar:3.12.0
 io.smallrye.reactive:smallrye-mutiny-vertx-web-common::jar:3.12.0
@@ -171,6 +173,7 @@ io.vertx:vertx-auth-common::jar:4.5.7
 io.vertx:vertx-bridge-common::jar:4.5.7
 io.vertx:vertx-codegen::jar:4.5.7
 io.vertx:vertx-core::jar:4.5.7
+io.vertx:vertx-mail-client::jar:4.5.7
 io.vertx:vertx-uri-template::jar:4.5.7
 io.vertx:vertx-web-common::jar:4.5.7
 io.vertx:vertx-web::jar:4.5.7
@@ -188,9 +191,9 @@ jakarta.resource:jakarta.resource-api::jar:2.1.0
 jakarta.transaction:jakarta.transaction-api::jar:2.0.1
 jakarta.ws.rs:jakarta.ws.rs-api::jar:3.1.0
 jakarta.xml.bind:jakarta.xml.bind-api::jar:4.0.2
+javax.activation:activation::jar:1.1
 net.bytebuddy:byte-buddy::jar:1.14.15
 org.antlr:antlr4-runtime::jar:4.13.0
-org.apache.commons:commons-lang3::jar:3.14.0
 org.bitbucket.b_c:jose4j::jar:0.9.6
 org.eclipse.angus:angus-activation::jar:2.0.2
 org.eclipse.microprofile.config:microprofile-config-api::jar:3.1
@@ -222,4 +225,3 @@ org.reactivestreams:reactive-streams::jar:1.0.4
 org.slf4j:slf4j-api::jar:2.0.6
 org.wildfly.common:wildfly-common::jar:1.7.0.Final
 org.yaml:snakeyaml::jar:2.2
-org.yaml:snakeyaml:android:jar:1.23
