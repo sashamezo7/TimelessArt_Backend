@@ -65,7 +65,7 @@ public class AccountController {
     }
 
     @GET
-    @RolesAllowed("ADMIN")
+    @RolesAllowed("CLIENT")
     @SecurityRequirement(name = "Authorization")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllAccounts() {
