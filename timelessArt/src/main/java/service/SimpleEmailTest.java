@@ -14,7 +14,7 @@ public class SimpleEmailTest {
 
     public void sendTestEmail() {
         try {
-            mailer.send(Mail.withText("sasamezo77@gmail.com", "Test Email",
+            mailer.send(Mail.withText("anghelutaruxandra88@gmail.com", "Test Email",
                     "This is a test email to verify SMTP settings."));
             System.out.println("Email sent successfully!");
         } catch (Exception e) {

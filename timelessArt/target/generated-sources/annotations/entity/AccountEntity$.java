@@ -17,21 +17,21 @@ import java.time.LocalDateTime;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
+     * This Field corresponds to the {@link AccountEntity} field "role".
      */
-    public static final StringField<AccountEntity> email = StringField.create(
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
         AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
+        "role",
+        AccountEntity::getRole,
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "token".
+     * This Field corresponds to the {@link AccountEntity} field "password".
      */
-    public static final StringField<AccountEntity> token = StringField.create(
+    public static final StringField<AccountEntity> password = StringField.create(
         AccountEntity.class,
-        "token",
-        AccountEntity::getToken,
+        "password",
+        AccountEntity::getPassword,
         false
     );
     /**
@@ -53,21 +53,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
-    public static final StringField<AccountEntity> password = StringField.create(
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
         AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
-     */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
-        AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
+        "validAccount",
+        AccountEntity::isValidAccount,
         false
     );
     /**
@@ -81,12 +72,21 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
+     * This Field corresponds to the {@link AccountEntity} field "email".
      */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
+    public static final StringField<AccountEntity> email = StringField.create(
         AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "token".
+     */
+    public static final StringField<AccountEntity> token = StringField.create(
+        AccountEntity.class,
+        "token",
+        AccountEntity::getToken,
         false
     );
 }

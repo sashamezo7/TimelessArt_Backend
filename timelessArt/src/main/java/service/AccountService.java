@@ -97,7 +97,7 @@ public class AccountService {
         account.setToken(token);
         account.setResetPasswordExpires(LocalDateTime.now().plusHours(1));
         accountRepo.save(account);
-        String resetLink = "https://example.com/reset-password?token=" + token;
+        String resetLink = "http://localhost:5173/reset-password?token=" + token;
 
         emailService.sendPasswordResetEmail(email, resetLink);
     }

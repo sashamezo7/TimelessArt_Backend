@@ -100,22 +100,9 @@ public class AccountController {
     public Response resetPassword(PasswordResetRequest request) {
         try {
             accountService.resetPassword(request.getToken(), request.getNewPassword());
-            return Response.ok().entity("Password has been reset successfully").build();
+            return Response.ok().entity("{\"message\": \"Password has been reset successfully\"}").build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
-        }
-    }
-    @GET
-    @Path("/send")
-    @Blocking
-    public Response sendTestEmail() {
-        try {
-            emailTestService.sendTestEmail();
-            return Response.status(Response.Status.NO_CONTENT).build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Failed to send test email: " + e.getMessage())
-                    .build();
         }
     }
 
