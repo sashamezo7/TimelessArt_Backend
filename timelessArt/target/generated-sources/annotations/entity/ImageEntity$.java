@@ -23,21 +23,21 @@ public final class ImageEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ImageEntity} field "artwork".
-     */
-    public static final ReferenceField<ImageEntity, ArtworkEntity> artwork = ReferenceField.create(
-        ImageEntity.class,
-        "artwork",
-        ImageEntity::getArtwork,
-        false
-    );
-    /**
      * This Field corresponds to the {@link ImageEntity} field "id".
      */
     public static final IntField<ImageEntity> id = IntField.create(
         ImageEntity.class,
         "id",
         ImageEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ImageEntity} field "artwork".
+     */
+    public static final ReferenceField<ImageEntity, ArtworkEntity> artwork = ReferenceField.create(
+        ImageEntity.class,
+        "artwork",
+        ImageEntity::getArtwork,
         false
     );
 }

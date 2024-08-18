@@ -20,12 +20,12 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
+     * This Field corresponds to the {@link OrderEntity} field "status".
      */
-    public static final IntField<OrderEntity> id = IntField.create(
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
         OrderEntity.class,
-        "id",
-        OrderEntity::getId,
+        "status",
+        OrderEntity::getStatus,
         false
     );
     /**
@@ -35,15 +35,6 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "client",
         OrderEntity::getClient,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "updateDate".
-     */
-    public static final ComparableField<OrderEntity, Timestamp> updateDate = ComparableField.create(
-        OrderEntity.class,
-        "updateDate",
-        OrderEntity::getUpdateDate,
         false
     );
     /**
@@ -65,12 +56,21 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
+     * This Field corresponds to the {@link OrderEntity} field "updateDate".
      */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+    public static final ComparableField<OrderEntity, Timestamp> updateDate = ComparableField.create(
         OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
+        "updateDate",
+        OrderEntity::getUpdateDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "id".
+     */
+    public static final IntField<OrderEntity> id = IntField.create(
+        OrderEntity.class,
+        "id",
+        OrderEntity::getId,
         false
     );
     /**

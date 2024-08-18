@@ -23,11 +23,11 @@ public class ClientsEntity {
     @Id
     @Column(name = "id_client")
     private int id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account", nullable = false)
     private AccountEntity account;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List <ReviewEntity> reviews;
 
     @OneToMany(mappedBy = "client")

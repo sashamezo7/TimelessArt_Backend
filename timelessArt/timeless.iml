@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="timeless" value="b5871b4a-075b-46be-a0c9-4bcd2939cbdc" />
+          <factory-entry name="timeless" value="042ad19d-9dc7-4c74-9733-b517bb693b7d" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

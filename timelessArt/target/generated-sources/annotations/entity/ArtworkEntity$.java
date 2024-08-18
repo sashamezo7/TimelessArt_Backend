@@ -1,5 +1,6 @@
 package entity;
 
+import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
 import com.speedment.jpastreamer.field.IntField;
 import com.speedment.jpastreamer.field.ReferenceField;
@@ -22,21 +23,12 @@ import java.util.List;
 public final class ArtworkEntity$ {
     
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "status".
+     * This Field corresponds to the {@link ArtworkEntity} field "height".
      */
-    public static final ComparableField<ArtworkEntity, artworkStatus> status = ComparableField.create(
+    public static final ComparableField<ArtworkEntity, Float> height = ComparableField.create(
         ArtworkEntity.class,
-        "status",
-        ArtworkEntity::getStatus,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artworkDate".
-     */
-    public static final ComparableField<ArtworkEntity, Date> artworkDate = ComparableField.create(
-        ArtworkEntity.class,
-        "artworkDate",
-        ArtworkEntity::getArtworkDate,
+        "height",
+        ArtworkEntity::getHeight,
         false
     );
     /**
@@ -49,6 +41,24 @@ public final class ArtworkEntity$ {
         false
     );
     /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artist".
+     */
+    public static final ReferenceField<ArtworkEntity, ArtistEntity> artist = ReferenceField.create(
+        ArtworkEntity.class,
+        "artist",
+        ArtworkEntity::getArtist,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "frame".
+     */
+    public static final BooleanField<ArtworkEntity> frame = BooleanField.create(
+        ArtworkEntity.class,
+        "frame",
+        ArtworkEntity::isFrame,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ArtworkEntity} field "reviews".
      */
     public static final ReferenceField<ArtworkEntity, List<ReviewEntity>> reviews = ReferenceField.create(
@@ -58,21 +68,12 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "exhibition".
+     * This Field corresponds to the {@link ArtworkEntity} field "image".
      */
-    public static final ReferenceField<ArtworkEntity, ExhibitionEntity> exhibition = ReferenceField.create(
+    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
         ArtworkEntity.class,
-        "exhibition",
-        ArtworkEntity::getExhibition,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "title".
-     */
-    public static final StringField<ArtworkEntity> title = StringField.create(
-        ArtworkEntity.class,
-        "title",
-        ArtworkEntity::getTitle,
+        "image",
+        ArtworkEntity::getImage,
         false
     );
     /**
@@ -82,15 +83,6 @@ public final class ArtworkEntity$ {
         ArtworkEntity.class,
         "id",
         ArtworkEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ArtworkEntity} field "artist".
-     */
-    public static final ReferenceField<ArtworkEntity, ArtistEntity> artist = ReferenceField.create(
-        ArtworkEntity.class,
-        "artist",
-        ArtworkEntity::getArtist,
         false
     );
     /**
@@ -121,12 +113,12 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "addingDate".
+     * This Field corresponds to the {@link ArtworkEntity} field "status".
      */
-    public static final ComparableField<ArtworkEntity, Timestamp> addingDate = ComparableField.create(
+    public static final ComparableField<ArtworkEntity, artworkStatus> status = ComparableField.create(
         ArtworkEntity.class,
-        "addingDate",
-        ArtworkEntity::getAddingDate,
+        "status",
+        ArtworkEntity::getStatus,
         false
     );
     /**
@@ -139,12 +131,66 @@ public final class ArtworkEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ArtworkEntity} field "image".
+     * This Field corresponds to the {@link ArtworkEntity} field "title".
      */
-    public static final ReferenceField<ArtworkEntity, List<ImageEntity>> image = ReferenceField.create(
+    public static final StringField<ArtworkEntity> title = StringField.create(
         ArtworkEntity.class,
-        "image",
-        ArtworkEntity::getImage,
+        "title",
+        ArtworkEntity::getTitle,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "exhibition".
+     */
+    public static final ReferenceField<ArtworkEntity, ExhibitionEntity> exhibition = ReferenceField.create(
+        ArtworkEntity.class,
+        "exhibition",
+        ArtworkEntity::getExhibition,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "technique".
+     */
+    public static final StringField<ArtworkEntity> technique = StringField.create(
+        ArtworkEntity.class,
+        "technique",
+        ArtworkEntity::getTechnique,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "width".
+     */
+    public static final ComparableField<ArtworkEntity, Float> width = ComparableField.create(
+        ArtworkEntity.class,
+        "width",
+        ArtworkEntity::getWidth,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "artworkDate".
+     */
+    public static final ComparableField<ArtworkEntity, Date> artworkDate = ComparableField.create(
+        ArtworkEntity.class,
+        "artworkDate",
+        ArtworkEntity::getArtworkDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "length".
+     */
+    public static final ComparableField<ArtworkEntity, Float> length = ComparableField.create(
+        ArtworkEntity.class,
+        "length",
+        ArtworkEntity::getLength,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ArtworkEntity} field "addingDate".
+     */
+    public static final ComparableField<ArtworkEntity, Timestamp> addingDate = ComparableField.create(
+        ArtworkEntity.class,
+        "addingDate",
+        ArtworkEntity::getAddingDate,
         false
     );
 }
