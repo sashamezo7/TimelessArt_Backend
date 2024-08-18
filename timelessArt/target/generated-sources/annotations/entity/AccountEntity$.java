@@ -17,39 +17,12 @@ import java.time.LocalDateTime;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
-     */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
-        AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
-     */
-    public static final StringField<AccountEntity> password = StringField.create(
-        AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "keyArtist".
      */
     public static final StringField<AccountEntity> keyArtist = StringField.create(
         AccountEntity.class,
         "keyArtist",
         AccountEntity::getKeyArtist,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
-     */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
-        AccountEntity.class,
-        "id",
-        AccountEntity::getId,
         false
     );
     /**
@@ -87,6 +60,33 @@ public final class AccountEntity$ {
         AccountEntity.class,
         "token",
         AccountEntity::getToken,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "password".
+     */
+    public static final StringField<AccountEntity> password = StringField.create(
+        AccountEntity.class,
+        "password",
+        AccountEntity::getPassword,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "role".
+     */
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
+        AccountEntity.class,
+        "role",
+        AccountEntity::getRole,
         false
     );
 }

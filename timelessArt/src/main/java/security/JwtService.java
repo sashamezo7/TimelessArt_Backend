@@ -2,22 +2,28 @@ package security;
 
 import entity.AccountEntity;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.core.HttpHeaders;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import repo.AccountRepo;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SignatureException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.Date;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Optional;
 
 @ApplicationScoped
 public class JwtService {
@@ -29,6 +35,8 @@ public class JwtService {
     private final String publicKeyLocation;
     private PrivateKey privateKey;
     private PublicKey publicKey;
+    @Inject
+    private AccountRepo accountRepo;
 
     public JwtService(@ConfigProperty(name = "mp.jwt.verify.issuer") String issuer,
                       @ConfigProperty(name = "mp.jwt.verify.audience") String audience,
@@ -91,5 +99,27 @@ public class JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    public String getEmailFromToken(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(publicKey)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            return claims.getSubject();
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid token");
+        }
+    }
+    public String extractEmailFromHeaders(HttpHeaders httpHeaders) {
+        String authHeader = httpHeaders.getHeaderString(HttpHeaders.AUTHORIZATION);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new RuntimeException("Authorization header must be provided");
+        }
+        String token = authHeader.substring("Bearer".length()).trim();
+        return getEmailFromToken(token);
     }
 }

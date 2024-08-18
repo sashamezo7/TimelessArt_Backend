@@ -31,17 +31,25 @@ public class AccountService {
 
     @Transactional
     public AccountEntity createAccount(String email, String password) {
-        AccountEntity account1 = accountRepo.findByEmail(email);
-        if(account1!=null){
-            throw new IllegalArgumentException("User exist");
-        }
+        // Verifică dacă există un cont cu acest email
+        accountRepo.findByEmail(email).ifPresent(existingAccount -> {
+            throw new IllegalArgumentException("User already exists");
+        });
+
+        // Validarea emailului
         if (!EmailValidator.isValid(email)) {
             throw new IllegalArgumentException("Email not valid");
         }
+
+        // Validarea parolei
         if (!PasswordValidator.isValid(password)) {
-            throw new IllegalArgumentException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
+            throw new IllegalArgumentException("Password should be at least 8 characters long, contain at least one lowercase letter, and at least one uppercase letter");
         }
+
+        // Hash-ul parolei
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+
+        // Crearea și salvarea contului
         AccountEntity account = AccountEntity.builder()
                 .email(email)
                 .password(bcryptHashString)
@@ -49,6 +57,8 @@ public class AccountService {
                 .role(AccountEntity.Role.CLIENT)
                 .build();
         accountRepo.save(account);
+
+        // Returnarea contului creat
         return account;
     }
 
@@ -71,7 +81,8 @@ public class AccountService {
         if (!PasswordValidator.isValid(password)) {
             throw new InvalidCredentialsException("Password should be at least 8 caracters long, contains at least one lowercase letter, and at least one uppercase letter");
         }
-        AccountEntity account = accountRepo.findByEmail(email);
+        AccountEntity account = accountRepo.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Account not found"));;
         if (account == null) {
             throw new InvalidCredentialsException("Invalid email, password");
         }
@@ -89,7 +100,8 @@ public class AccountService {
 
     @Transactional
     public void requestPasswordReset(String email) {
-        AccountEntity account = accountRepo.findByEmail(email);
+        AccountEntity account = accountRepo.findByEmail(email).orElseThrow(() -> new RuntimeException("Account not found"));
+                ;
         if (account == null) {
             throw new IllegalArgumentException("Email not found");
         }
