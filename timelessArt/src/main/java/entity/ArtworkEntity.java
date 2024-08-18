@@ -31,17 +31,17 @@ public class ArtworkEntity {
     @JoinColumn(name = "id_artist", nullable = false)
     private ArtistEntity artist;
 
-    @OneToMany(mappedBy = "artwork")
+    @OneToMany(mappedBy = "artwork", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReviewEntity> reviews;
 
     @ManyToOne
     @JoinColumn(name = "id_exhibition")
     private ExhibitionEntity exhibition;
 
-    @OneToMany(mappedBy = "artwork")
+    @OneToMany(mappedBy = "artwork", cascade = CascadeType.ALL, orphanRemoval = true)
     private List <ImageEntity> image;
 
-    @OneToMany(mappedBy = "artwork")
+    @OneToMany(mappedBy = "artwork", cascade = CascadeType.ALL, orphanRemoval = true)
     private List <VideoEntity> video;
 
     @Column(name = "title")
@@ -57,12 +57,21 @@ public class ArtworkEntity {
     @Column(name = "price")
     private BigDecimal price;
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private artworkStatus status;
     @Column(name = "adding_date")
     private Timestamp addingDate;
-
+    @Column(name = "frame")
+    private boolean frame;
+    @Column(name = "technique")
+    private String technique;
+    @Column(name = "length")
+    private Float length;
+    @Column(name = "width")
+    private Float width;
+    @Column(name = "height")
+    private Float height;
 
     public enum typeArtwork {pictura,sculptura,grafica,fotografie,altul};
     public enum artworkStatus {disponibil,vandut,in_expozitie,indisponibil};
-
 }

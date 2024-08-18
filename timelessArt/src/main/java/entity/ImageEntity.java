@@ -17,7 +17,7 @@ public class ImageEntity {
 
     private String url;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "id_artwork")
     private ArtworkEntity artwork;
 

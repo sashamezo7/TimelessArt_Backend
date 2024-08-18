@@ -2,6 +2,7 @@ package entity;
 
 import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
+import com.speedment.jpastreamer.field.ReferenceField;
 import com.speedment.jpastreamer.field.StringField;
 import entity.AccountEntity.Role;
 
@@ -17,12 +18,39 @@ import java.time.LocalDateTime;
 public final class AccountEntity$ {
     
     /**
-     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     * This Field corresponds to the {@link AccountEntity} field "validAccount".
      */
-    public static final StringField<AccountEntity> keyArtist = StringField.create(
+    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
         AccountEntity.class,
-        "keyArtist",
-        AccountEntity::getKeyArtist,
+        "validAccount",
+        AccountEntity::isValidAccount,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "password".
+     */
+    public static final StringField<AccountEntity> password = StringField.create(
+        AccountEntity.class,
+        "password",
+        AccountEntity::getPassword,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "email".
+     */
+    public static final StringField<AccountEntity> email = StringField.create(
+        AccountEntity.class,
+        "email",
+        AccountEntity::getEmail,
         false
     );
     /**
@@ -45,21 +73,21 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
+     * This Field corresponds to the {@link AccountEntity} field "artist".
      */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+    public static final ReferenceField<AccountEntity, ArtistEntity> artist = ReferenceField.create(
         AccountEntity.class,
-        "id",
-        AccountEntity::getId,
+        "artist",
+        AccountEntity::getArtist,
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
+     * This Field corresponds to the {@link AccountEntity} field "clients".
      */
-    public static final StringField<AccountEntity> email = StringField.create(
+    public static final ReferenceField<AccountEntity, ClientsEntity> clients = ReferenceField.create(
         AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
+        "clients",
+        AccountEntity::getClients,
         false
     );
     /**
@@ -72,21 +100,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
+     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
      */
-    public static final StringField<AccountEntity> password = StringField.create(
+    public static final StringField<AccountEntity> keyArtist = StringField.create(
         AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "validAccount".
-     */
-    public static final BooleanField<AccountEntity> validAccount = BooleanField.create(
-        AccountEntity.class,
-        "validAccount",
-        AccountEntity::isValidAccount,
+        "keyArtist",
+        AccountEntity::getKeyArtist,
         false
     );
 }

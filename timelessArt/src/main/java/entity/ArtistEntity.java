@@ -22,12 +22,13 @@ public class ArtistEntity {
     @Column(name = "id_artist")
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "account", nullable = false)
     private AccountEntity account;
 
-    @OneToMany(mappedBy = "artist")
-    private List <ArtworkEntity> artworks;
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArtworkEntity> artworks;
+
 
     @ManyToMany
     @JoinTable(
@@ -40,7 +41,7 @@ public class ArtistEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<VideoEntity> videos;
 
     @Column(name = "first_mane", nullable = false)

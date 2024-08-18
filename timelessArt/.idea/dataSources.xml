@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@timelessartserver.mysql.database.azure.com" uuid="23294e00-13ff-4433-acdb-820cf1cf1eff">
+    <data-source source="LOCAL" name="timelessart@timelessartserver.mysql.database.azure.com" uuid="042ad19d-9dc7-4c74-9733-b517bb693b7d">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://timelessartserver.mysql.database.azure.com:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://timelessartserver.mysql.database.azure.com:3306/timelessart</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

@@ -25,7 +25,7 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "id_client")
     private ClientsEntity client;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArtworkEntity> artworks;
     @Column(name = "order_date", nullable = false)
     private Date orderDate;

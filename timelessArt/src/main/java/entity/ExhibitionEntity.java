@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "exhibition", schema = "timelessart", catalog = "")
+@Table(name = "exhibition", schema = "timelessart")
 public class ExhibitionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -22,8 +22,8 @@ public class ExhibitionEntity {
     private int id;
     @ManyToMany(mappedBy = "exhibitions")
     private List<ArtistEntity> artists;
-    @OneToMany(mappedBy = "exhibition")
-    private List <ArtworkEntity> artworks;
+    @OneToMany(mappedBy = "exhibition", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ArtworkEntity> artworks;
     @Basic
     @Column(name = "name")
     private String name;

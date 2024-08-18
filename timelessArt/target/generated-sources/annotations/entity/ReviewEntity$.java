@@ -17,6 +17,15 @@ import java.sql.Timestamp;
 public final class ReviewEntity$ {
     
     /**
+     * This Field corresponds to the {@link ReviewEntity} field "artwork".
+     */
+    public static final ReferenceField<ReviewEntity, ArtworkEntity> artwork = ReferenceField.create(
+        ReviewEntity.class,
+        "artwork",
+        ReviewEntity::getArtwork,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ReviewEntity} field "reviewText".
      */
     public static final StringField<ReviewEntity> reviewText = StringField.create(
@@ -50,15 +59,6 @@ public final class ReviewEntity$ {
         ReviewEntity.class,
         "id",
         ReviewEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ReviewEntity} field "artwork".
-     */
-    public static final ReferenceField<ReviewEntity, ArtworkEntity> artwork = ReferenceField.create(
-        ReviewEntity.class,
-        "artwork",
-        ReviewEntity::getArtwork,
         false
     );
     /**
