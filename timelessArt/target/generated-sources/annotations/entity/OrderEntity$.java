@@ -20,12 +20,39 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
+     * This Field corresponds to the {@link OrderEntity} field "status".
+     */
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+        OrderEntity.class,
+        "status",
+        OrderEntity::getStatus,
+        false
+    );
+    /**
      * This Field corresponds to the {@link OrderEntity} field "id".
      */
     public static final IntField<OrderEntity> id = IntField.create(
         OrderEntity.class,
         "id",
         OrderEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "price".
+     */
+    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
+        OrderEntity.class,
+        "price",
+        OrderEntity::getPrice,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "orderDate".
+     */
+    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
+        OrderEntity.class,
+        "orderDate",
+        OrderEntity::getOrderDate,
         false
     );
     /**
@@ -53,33 +80,6 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "artworks",
         OrderEntity::getArtworks,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "price".
-     */
-    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
-        OrderEntity.class,
-        "price",
-        OrderEntity::getPrice,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
-     */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
-        OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "orderDate".
-     */
-    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
-        OrderEntity.class,
-        "orderDate",
-        OrderEntity::getOrderDate,
         false
     );
 }
