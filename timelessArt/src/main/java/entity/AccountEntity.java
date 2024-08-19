@@ -33,7 +33,7 @@ public class AccountEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
-    
+
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
     private ArtistEntity artist;
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -1,2 +1,5 @@
+DTO\ArtworkListDTO.class
+controller\ArtworkController.class
 service\ArtworkService.class
+DTO\ArtworkDTO.class
 service\JwtService.class

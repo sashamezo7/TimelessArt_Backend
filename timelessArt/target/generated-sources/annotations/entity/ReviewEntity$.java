@@ -17,12 +17,12 @@ import java.sql.Timestamp;
 public final class ReviewEntity$ {
     
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "artwork".
+     * This Field corresponds to the {@link ReviewEntity} field "id".
      */
-    public static final ReferenceField<ReviewEntity, ArtworkEntity> artwork = ReferenceField.create(
+    public static final IntField<ReviewEntity> id = IntField.create(
         ReviewEntity.class,
-        "artwork",
-        ReviewEntity::getArtwork,
+        "id",
+        ReviewEntity::getId,
         false
     );
     /**
@@ -35,12 +35,12 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "client".
+     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
      */
-    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
+    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
         ReviewEntity.class,
-        "client",
-        ReviewEntity::getClient,
+        "reviewDate",
+        ReviewEntity::getReviewDate,
         false
     );
     /**
@@ -53,21 +53,21 @@ public final class ReviewEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "id".
+     * This Field corresponds to the {@link ReviewEntity} field "artwork".
      */
-    public static final IntField<ReviewEntity> id = IntField.create(
+    public static final ReferenceField<ReviewEntity, ArtworkEntity> artwork = ReferenceField.create(
         ReviewEntity.class,
-        "id",
-        ReviewEntity::getId,
+        "artwork",
+        ReviewEntity::getArtwork,
         false
     );
     /**
-     * This Field corresponds to the {@link ReviewEntity} field "reviewDate".
+     * This Field corresponds to the {@link ReviewEntity} field "client".
      */
-    public static final ComparableField<ReviewEntity, Timestamp> reviewDate = ComparableField.create(
+    public static final ReferenceField<ReviewEntity, ClientsEntity> client = ReferenceField.create(
         ReviewEntity.class,
-        "reviewDate",
-        ReviewEntity::getReviewDate,
+        "client",
+        ReviewEntity::getClient,
         false
     );
 }
