@@ -2,6 +2,7 @@ entity/ArtistEntity$.class
 entity/ArtworkEntity$artworkStatus.class
 entity/ArtistEntity.class
 entity/ArtworkEntity$ArtworkEntityBuilder.class
+controller/ArtworkController.class
 entity/ExhibitionEntity.class
 entity/AccountEntity$.class
 service/ArtworkService.class
@@ -11,6 +12,7 @@ entity/OrderEntity$OrderEntityBuilder.class
 DTO/AuthenticationRequest.class
 entity/ArtworkEntity$.class
 entity/AccountEntity$Role.class
+DTO/ArtworkDTO.class
 DTO/EmailRequest.class
 entity/OrderEntity.class
 entity/AccountEntity.class
@@ -30,6 +32,7 @@ validation/PasswordValidator.class
 entity/ArtworkEntity.class
 service/EmailService.class
 repo/ClientsRepo.class
+DTO/ArtworkListDTO.class
 repo/AccountRepo.class
 entity/ReviewEntity$.class
 entity/OrderEntity$orderStatus.class

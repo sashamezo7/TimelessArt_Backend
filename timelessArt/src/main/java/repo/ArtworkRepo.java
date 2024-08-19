@@ -1,7 +1,13 @@
 package repo;
 
 import entity.ArtworkEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
-public interface ArtworkRepo extends JpaRepository<ArtworkEntity,Integer> {
+
+@ApplicationScoped
+public class ArtworkRepo implements PanacheRepository<ArtworkEntity> {
+    public long deleteArtworkIfOwner(Long artworkId, String email) {
+        return delete("id = ?1 AND artist.account.email = ?2", artworkId, email);
+    }
 }

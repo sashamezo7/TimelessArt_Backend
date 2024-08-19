@@ -38,12 +38,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
+     * This Field corresponds to the {@link OrderEntity} field "status".
      */
-    public static final IntField<OrderEntity> id = IntField.create(
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
         OrderEntity.class,
-        "id",
-        OrderEntity::getId,
+        "status",
+        OrderEntity::getStatus,
         false
     );
     /**
@@ -56,12 +56,12 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "status".
+     * This Field corresponds to the {@link OrderEntity} field "updateDate".
      */
-    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+    public static final ComparableField<OrderEntity, Timestamp> updateDate = ComparableField.create(
         OrderEntity.class,
-        "status",
-        OrderEntity::getStatus,
+        "updateDate",
+        OrderEntity::getUpdateDate,
         false
     );
     /**
@@ -80,6 +80,24 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "price",
         OrderEntity::getPrice,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "status".
+     */
+    public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
+        OrderEntity.class,
+        "status",
+        OrderEntity::getStatus,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "orderDate".
+     */
+    public static final ComparableField<OrderEntity, Date> orderDate = ComparableField.create(
+        OrderEntity.class,
+        "orderDate",
+        OrderEntity::getOrderDate,
         false
     );
 }

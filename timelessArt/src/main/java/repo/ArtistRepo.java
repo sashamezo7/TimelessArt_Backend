@@ -1,8 +1,10 @@
 package repo;
 
 import entity.ArtistEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
-public interface ArtistRepo extends JpaRepository<ArtistEntity,Integer> {
+@ApplicationScoped
+public class ArtistRepo implements PanacheRepository<ArtistEntity> {
 
 }
