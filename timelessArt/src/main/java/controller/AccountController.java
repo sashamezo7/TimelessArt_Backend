@@ -131,6 +131,7 @@ public class AccountController {
                         .entity("Failed to send email: " + e.getMessage())
                         .build());
     }
+
 }
 
 

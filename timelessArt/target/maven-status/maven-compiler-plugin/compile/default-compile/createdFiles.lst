@@ -4,6 +4,7 @@ entity/ArtistEntity.class
 entity/ArtworkEntity$ArtworkEntityBuilder.class
 controller/ArtworkController.class
 entity/ExhibitionEntity.class
+DTO/mapper/ArtworkMapperImpl.class
 entity/AccountEntity$.class
 service/ArtworkService.class
 repo/ReviewRepo.class
@@ -16,6 +17,8 @@ DTO/ArtworkDTO.class
 DTO/EmailRequest.class
 entity/OrderEntity.class
 entity/AccountEntity.class
+DTO/mapper/ArtworkMapper.class
+response/MessageResponse.class
 entity/VideoEntity$.class
 repo/ArtistRepo.class
 DTO/AuthenticationResponse.class
@@ -48,7 +51,6 @@ entity/ArtworkEntity$typeArtwork.class
 entity/ReviewEntity.class
 repo/ExhibitionRepo.class
 DTO/PasswordResetRequest.class
-security/JwtService.class
 entity/ArtistEntity$ArtistEntityBuilder.class
 entity/ExhibitionEntity$ExhibitionEntityBuilder.class
 service/AccountService.class

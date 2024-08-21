@@ -1,5 +1,6 @@
 package entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "artwork", schema = "timelessart")
-public class ArtworkEntity {
+public class ArtworkEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_artwork")
@@ -72,6 +73,6 @@ public class ArtworkEntity {
     @Column(name = "height")
     private Float height;
 
-    public enum typeArtwork {pictura,sculptura,grafica,fotografie,altul};
-    public enum artworkStatus {disponibil,vandut,in_expozitie,indisponibil};
+    public enum typeArtwork {pictura,sculptura,grafica,fotografie,altul}
+    public enum artworkStatus {disponibil,vandut,in_expozitie,indisponibil}
 }

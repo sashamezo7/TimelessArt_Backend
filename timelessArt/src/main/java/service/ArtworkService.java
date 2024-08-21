@@ -3,21 +3,21 @@ package service;
 
 import DTO.ArtworkDTO;
 import DTO.ArtworkListDTO;
+import DTO.mapper.ArtworkMapper;
 import entity.ArtworkEntity;
 import entity.ImageEntity;
 import entity.ArtistEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.SecurityContext;
-import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 import repo.ArtistRepo;
 import repo.ArtworkRepo;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class ArtworkService {
@@ -82,5 +82,21 @@ public class ArtworkService {
         return artwork.getArtist().getAccount().getEmail().equals(email);
     }
 
+    @Transactional
+    public List<ArtworkDTO> artworksByArtist(Long artistId) {
+        List<ArtworkEntity> artworks = artworkRepository.findByArtistId(artistId);
+        return artworks.stream()
+                .map(ArtworkMapper.INSTANCE::toDTO)
+                .collect(Collectors.toList());
+    }
+    @Transactional
+    public Optional<ArtworkDTO> getArtworkById(Long artworkId) {
+        ArtworkEntity artwork = artworkRepository.findById(artworkId);
+        if (artwork == null) {
+            return Optional.empty();
+        }
+        ArtworkDTO artworkDTO = ArtworkMapper.INSTANCE.toDTO(artwork);
+        return Optional.of(artworkDTO);
+    }
 
 }

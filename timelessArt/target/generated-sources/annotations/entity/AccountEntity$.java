@@ -27,30 +27,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
+     * This Field corresponds to the {@link AccountEntity} field "clients".
      */
-    public static final StringField<AccountEntity> password = StringField.create(
+    public static final ReferenceField<AccountEntity, ClientsEntity> clients = ReferenceField.create(
         AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "id".
-     */
-    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
-        AccountEntity.class,
-        "id",
-        AccountEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
-     */
-    public static final StringField<AccountEntity> email = StringField.create(
-        AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
+        "clients",
+        AccountEntity::getClients,
         false
     );
     /**
@@ -64,12 +46,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
+     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
      */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
+    public static final StringField<AccountEntity> keyArtist = StringField.create(
         AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
+        "keyArtist",
+        AccountEntity::getKeyArtist,
         false
     );
     /**
@@ -82,12 +64,30 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "clients".
+     * This Field corresponds to the {@link AccountEntity} field "email".
      */
-    public static final ReferenceField<AccountEntity, ClientsEntity> clients = ReferenceField.create(
+    public static final StringField<AccountEntity> email = StringField.create(
         AccountEntity.class,
-        "clients",
-        AccountEntity::getClients,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "id".
+     */
+    public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
+        AccountEntity.class,
+        "id",
+        AccountEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "role".
+     */
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
+        AccountEntity.class,
+        "role",
+        AccountEntity::getRole,
         false
     );
     /**
@@ -100,12 +100,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "keyArtist".
+     * This Field corresponds to the {@link AccountEntity} field "password".
      */
-    public static final StringField<AccountEntity> keyArtist = StringField.create(
+    public static final StringField<AccountEntity> password = StringField.create(
         AccountEntity.class,
-        "keyArtist",
-        AccountEntity::getKeyArtist,
+        "password",
+        AccountEntity::getPassword,
         false
     );
 }

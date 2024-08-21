@@ -225,6 +225,8 @@ org.jboss.slf4j:slf4j-jboss-logmanager::jar:2.0.0.Final
 org.jboss.threads:jboss-threads::jar:3.6.1.Final
 org.jboss:jboss-transaction-spi::jar:8.0.0.Final
 org.jctools:jctools-core::jar:4.0.3
+org.mapstruct:mapstruct-processor::jar:1.5.3.Final
+org.mapstruct:mapstruct::jar:1.5.3.Final
 org.reactivestreams:reactive-streams::jar:1.0.4
 org.slf4j:slf4j-api::jar:2.0.6
 org.wildfly.common:wildfly-common::jar:1.7.0.Final
