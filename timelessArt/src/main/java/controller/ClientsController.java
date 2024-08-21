@@ -63,4 +63,18 @@ public class ClientsController {
             return Response.status(Response.Status.BAD_REQUEST).entity("Error completing profile: " + e.getMessage()).build();
         }
     }
+    @PATCH
+    @Path("UpdateClient/{email}")
+    @RolesAllowed("CLIENT")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateProfile(@QueryParam("fieldName") String fieldName, @QueryParam("newValue") String newValue) {
+        try {
+            String email = securityContext.getUserPrincipal().getName();
+            clientService.updateClientField(email, fieldName, newValue);
+            return Response.status(Response.Status.OK).entity("Profile updated successfully").build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Error updating profile: " + e.getMessage()).build();
+        }
+    }
 }

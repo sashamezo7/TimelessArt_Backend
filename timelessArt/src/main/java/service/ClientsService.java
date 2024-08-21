@@ -50,7 +50,43 @@ public class ClientsService {
 
         clientsRepo.save(clientEntity);
     }
+    @Transactional
+    public void updateClientField(String email, String fieldName, String newValue) {
+        AccountEntity accountEntity = accountRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
 
+        ClientsEntity clientEntity = clientsRepo.findByAccount(accountEntity)
+                .orElseThrow(() -> new RuntimeException("Client not found"));
+
+        switch (fieldName) {
+            case "name":
+                clientEntity.setName(newValue);
+                break;
+            case "firstName":
+                clientEntity.setFirstName(newValue);
+                break;
+            case "phone":
+                clientEntity.setPhone(newValue);
+                break;
+            case "address":
+                clientEntity.setAddress(newValue);
+                break;
+            case "city":
+                clientEntity.setCity(newValue);
+                break;
+            case "postalCode":
+                clientEntity.setPostalCode(newValue);
+                break;
+            case "country":
+                clientEntity.setCountry(newValue);
+                break;
+            // Adaugă alte câmpuri după cum este necesar
+            default:
+                throw new IllegalArgumentException("Invalid field name: " + fieldName);
+        }
+
+        clientsRepo.save(clientEntity);
+    }
 
 }
 

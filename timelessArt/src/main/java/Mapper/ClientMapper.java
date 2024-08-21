@@ -38,4 +38,33 @@ public class ClientMapper {
         //clientDTO.setRegistrationDate(client.getRegistrationDate());
         return clientDTO;
     }
+    public void updateEntityFromDto(ClientDTO dto, ClientsEntity entity) {
+
+        if (dto.getName() != null) {
+            entity.setName(dto.getName());
+        }
+        if (dto.getFirstName() != null) {
+            entity.setFirstName(dto.getFirstName());
+        }
+        if (dto.getPhone() != null) {
+            entity.setPhone(dto.getPhone());
+        }
+        if (dto.getAddress() != null) {
+            entity.setAddress(dto.getAddress());
+        }
+        if (dto.getCity() != null) {
+            entity.setCity(dto.getCity());
+        }
+        if (dto.getPostalCode() != null) {
+            entity.setPostalCode(dto.getPostalCode());
+        }
+        if (dto.getCountry() != null) {
+            entity.setCountry(dto.getCountry());
+        }
+        if (dto.getBirthDate() != null) {
+            entity.setBirthDate(dto.getBirthDate());
+        }
+
+    }
+
 }
