@@ -21,7 +21,7 @@ public class ClientsService {
     private final ClientMapper clientMapper;
 
     private final AccountRepo accountRepository;
-
+    @Transactional
     public ClientDTO getInfoAboutMe(String email) {
         AccountEntity accountEntity = accountRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Client not found"));
@@ -33,7 +33,7 @@ public class ClientsService {
 
         return clientMapper.mapToDto(clientEntity);
     }
-
+    @Transactional
     public List<ClientDTO> getAllClients() {
         return clientsRepo.findAll()
                 .stream()
