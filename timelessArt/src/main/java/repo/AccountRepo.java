@@ -9,9 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AccountRepo extends JpaRepository<AccountEntity,Long> {
-    AccountEntity findByEmail(String email);
+    Optional<AccountEntity> findByEmail(String email);
 
     @Query("SELECT a FROM AccountEntity a WHERE a.token = :token")
     AccountEntity findByToken(@Param("token") String token);

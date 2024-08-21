@@ -34,9 +34,4 @@ public class AccountEntity {
     @Column(name = "role", nullable = false)
     private Role role;
 
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArtistEntity artist;
-    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ClientsEntity clients;
-
 }

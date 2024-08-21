@@ -56,3 +56,4 @@ quarkus.log
 # Ignore local environment specific files
 .env
 .env.*
+.DS_Store

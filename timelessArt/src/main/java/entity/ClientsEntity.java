@@ -17,7 +17,7 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "clients", schema = "timelessart", catalog = "")
+@Table(name = "clients", schema = "timelessart")
 public class ClientsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -60,6 +60,10 @@ public class ClientsEntity {
     @Basic
     @Column(name = "registration_date")
     private Timestamp registrationDate;
+    @PrePersist
+    protected void onCreate() {
+        registrationDate = new Timestamp(System.currentTimeMillis());
+    }
 
 
 }
