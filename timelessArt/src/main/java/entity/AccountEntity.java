@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @Builder
@@ -24,6 +26,7 @@ public class AccountEntity {
     private String token;
     private String keyArtist;
     private boolean validAccount;
+    private LocalDateTime resetPasswordExpires;
     public enum Role {
         ARTIST, CLIENT, ADMIN
     }
