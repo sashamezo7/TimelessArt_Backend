@@ -19,6 +19,15 @@ import java.util.List;
 public final class ExhibitionEntity$ {
     
     /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "artists".
+     */
+    public static final ReferenceField<ExhibitionEntity, List<ArtistEntity>> artists = ReferenceField.create(
+        ExhibitionEntity.class,
+        "artists",
+        ExhibitionEntity::getArtists,
+        false
+    );
+    /**
      * This Field corresponds to the {@link ExhibitionEntity} field "location".
      */
     public static final StringField<ExhibitionEntity> location = StringField.create(
@@ -28,31 +37,12 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field
-     * "description".
+     * This Field corresponds to the {@link ExhibitionEntity} field "startDate".
      */
-    public static final StringField<ExhibitionEntity> description = StringField.create(
+    public static final ComparableField<ExhibitionEntity, Date> startDate = ComparableField.create(
         ExhibitionEntity.class,
-        "description",
-        ExhibitionEntity::getDescription,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "status".
-     */
-    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
-        ExhibitionEntity.class,
-        "status",
-        ExhibitionEntity::getStatus,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "name".
-     */
-    public static final StringField<ExhibitionEntity> name = StringField.create(
-        ExhibitionEntity.class,
-        "name",
-        ExhibitionEntity::getName,
+        "startDate",
+        ExhibitionEntity::getStartDate,
         false
     );
     /**
@@ -65,12 +55,39 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "startDate".
+     * This Field corresponds to the {@link ExhibitionEntity} field "name".
      */
-    public static final ComparableField<ExhibitionEntity, Date> startDate = ComparableField.create(
+    public static final StringField<ExhibitionEntity> name = StringField.create(
         ExhibitionEntity.class,
-        "startDate",
-        ExhibitionEntity::getStartDate,
+        "name",
+        ExhibitionEntity::getName,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "status".
+     */
+    public static final ComparableField<ExhibitionEntity, exhibitionStatus> status = ComparableField.create(
+        ExhibitionEntity.class,
+        "status",
+        ExhibitionEntity::getStatus,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "endDate".
+     */
+    public static final ComparableField<ExhibitionEntity, Date> endDate = ComparableField.create(
+        ExhibitionEntity.class,
+        "endDate",
+        ExhibitionEntity::getEndDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link ExhibitionEntity} field "id".
+     */
+    public static final IntField<ExhibitionEntity> id = IntField.create(
+        ExhibitionEntity.class,
+        "id",
+        ExhibitionEntity::getId,
         false
     );
     /**
@@ -84,30 +101,13 @@ public final class ExhibitionEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "id".
+     * This Field corresponds to the {@link ExhibitionEntity} field
+     * "description".
      */
-    public static final IntField<ExhibitionEntity> id = IntField.create(
+    public static final StringField<ExhibitionEntity> description = StringField.create(
         ExhibitionEntity.class,
-        "id",
-        ExhibitionEntity::getId,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "endDate".
-     */
-    public static final ComparableField<ExhibitionEntity, Date> endDate = ComparableField.create(
-        ExhibitionEntity.class,
-        "endDate",
-        ExhibitionEntity::getEndDate,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link ExhibitionEntity} field "artists".
-     */
-    public static final ReferenceField<ExhibitionEntity, List<ArtistEntity>> artists = ReferenceField.create(
-        ExhibitionEntity.class,
-        "artists",
-        ExhibitionEntity::getArtists,
+        "description",
+        ExhibitionEntity::getDescription,
         false
     );
 }

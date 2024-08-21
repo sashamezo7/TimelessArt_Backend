@@ -23,7 +23,7 @@ public class ClientsEntity {
     @Id
     @Column(name = "id_client")
     private int id;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
     @JoinColumn(name = "account", nullable = false)
     private AccountEntity account;
 

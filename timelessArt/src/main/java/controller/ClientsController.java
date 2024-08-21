@@ -4,12 +4,8 @@ import DTO.ClientDTO;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.HttpHeaders;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.*;
 import service.ClientsService;
-import security.JwtService;
 
 import java.util.List;
 
@@ -21,15 +17,15 @@ public class ClientsController {
     ClientsService clientService;
 
     @Inject
-    JwtService jwtService;
+    SecurityContext securityContext;
 
     @GET
     @Path("/me")
     @RolesAllowed("CLIENT")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMyInfo(@Context HttpHeaders httpHeaders) {
+    public Response getMyInfo() {
         try {
-            String userEmail = jwtService.extractEmailFromHeaders(httpHeaders);
+            String userEmail = securityContext.getUserPrincipal().getName();
             ClientDTO clientDTO = clientService.getInfoAboutMe(userEmail);
             return Response.ok(clientDTO).build();
         } catch (RuntimeException e) {
@@ -58,9 +54,9 @@ public class ClientsController {
     @Path("Register")
     @RolesAllowed("CLIENT")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response completeProfile(ClientDTO clientDTO, @Context HttpHeaders httpHeaders) {
+    public Response completeProfile(ClientDTO clientDTO) {
         try {
-            String userEmail = jwtService.extractEmailFromHeaders(httpHeaders);
+            String userEmail = securityContext.getUserPrincipal().getName();
             clientService.createNewClient(clientDTO, userEmail);
             return Response.status(Response.Status.OK).entity("Profile completed successfully").build();
         } catch (Exception e) {

@@ -5,6 +5,7 @@ import Mapper.ClientMapper;
 import entity.AccountEntity;
 import entity.ClientsEntity;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import repo.AccountRepo;
 import repo.ClientsRepo;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 @AllArgsConstructor
 public class ClientsService {
+
     private final ClientsRepo clientsRepo;
     private final ClientMapper clientMapper;
 
@@ -39,6 +41,7 @@ public class ClientsService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void createNewClient(ClientDTO clientDTO,String email) {
         AccountEntity accountEntity = accountRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
@@ -47,6 +50,7 @@ public class ClientsService {
 
         clientsRepo.save(clientEntity);
     }
+
 
 }
 

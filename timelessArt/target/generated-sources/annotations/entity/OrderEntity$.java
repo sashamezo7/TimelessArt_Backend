@@ -20,24 +20,6 @@ import java.util.List;
 public final class OrderEntity$ {
     
     /**
-     * This Field corresponds to the {@link OrderEntity} field "price".
-     */
-    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
-        OrderEntity.class,
-        "price",
-        OrderEntity::getPrice,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link OrderEntity} field "client".
-     */
-    public static final ReferenceField<OrderEntity, ClientsEntity> client = ReferenceField.create(
-        OrderEntity.class,
-        "client",
-        OrderEntity::getClient,
-        false
-    );
-    /**
      * This Field corresponds to the {@link OrderEntity} field "status".
      */
     public static final ComparableField<OrderEntity, orderStatus> status = ComparableField.create(
@@ -56,15 +38,6 @@ public final class OrderEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link OrderEntity} field "id".
-     */
-    public static final IntField<OrderEntity> id = IntField.create(
-        OrderEntity.class,
-        "id",
-        OrderEntity::getId,
-        false
-    );
-    /**
      * This Field corresponds to the {@link OrderEntity} field "artworks".
      */
     public static final ReferenceField<OrderEntity, List<ArtworkEntity>> artworks = ReferenceField.create(
@@ -80,6 +53,33 @@ public final class OrderEntity$ {
         OrderEntity.class,
         "orderDate",
         OrderEntity::getOrderDate,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "id".
+     */
+    public static final IntField<OrderEntity> id = IntField.create(
+        OrderEntity.class,
+        "id",
+        OrderEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "price".
+     */
+    public static final ComparableField<OrderEntity, BigDecimal> price = ComparableField.create(
+        OrderEntity.class,
+        "price",
+        OrderEntity::getPrice,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link OrderEntity} field "client".
+     */
+    public static final ReferenceField<OrderEntity, ClientsEntity> client = ReferenceField.create(
+        OrderEntity.class,
+        "client",
+        OrderEntity::getClient,
         false
     );
 }

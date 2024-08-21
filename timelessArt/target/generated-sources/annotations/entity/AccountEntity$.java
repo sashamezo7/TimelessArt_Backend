@@ -2,11 +2,8 @@ package entity;
 
 import com.speedment.jpastreamer.field.BooleanField;
 import com.speedment.jpastreamer.field.ComparableField;
-import com.speedment.jpastreamer.field.ReferenceField;
 import com.speedment.jpastreamer.field.StringField;
 import entity.AccountEntity.Role;
-
-import java.time.LocalDateTime;
 
 /**
  * The generated base for entity {@link AccountEntity} representing entities of
@@ -27,30 +24,12 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "artist".
+     * This Field corresponds to the {@link AccountEntity} field "role".
      */
-    public static final ReferenceField<AccountEntity, ArtistEntity> artist = ReferenceField.create(
+    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
         AccountEntity.class,
-        "artist",
-        AccountEntity::getArtist,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "clients".
-     */
-    public static final ReferenceField<AccountEntity, ClientsEntity> clients = ReferenceField.create(
-        AccountEntity.class,
-        "clients",
-        AccountEntity::getClients,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "email".
-     */
-    public static final StringField<AccountEntity> email = StringField.create(
-        AccountEntity.class,
-        "email",
-        AccountEntity::getEmail,
+        "role",
+        AccountEntity::getRole,
         false
     );
     /**
@@ -63,16 +42,6 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field
-     * "resetPasswordExpires".
-     */
-    public static final ComparableField<AccountEntity, LocalDateTime> resetPasswordExpires = ComparableField.create(
-        AccountEntity.class,
-        "resetPasswordExpires",
-        AccountEntity::getResetPasswordExpires,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "id".
      */
     public static final ComparableField<AccountEntity, Long> id = ComparableField.create(
@@ -82,30 +51,30 @@ public final class AccountEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link AccountEntity} field "password".
-     */
-    public static final StringField<AccountEntity> password = StringField.create(
-        AccountEntity.class,
-        "password",
-        AccountEntity::getPassword,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link AccountEntity} field "role".
-     */
-    public static final ComparableField<AccountEntity, Role> role = ComparableField.create(
-        AccountEntity.class,
-        "role",
-        AccountEntity::getRole,
-        false
-    );
-    /**
      * This Field corresponds to the {@link AccountEntity} field "token".
      */
     public static final StringField<AccountEntity> token = StringField.create(
         AccountEntity.class,
         "token",
         AccountEntity::getToken,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "email".
+     */
+    public static final StringField<AccountEntity> email = StringField.create(
+        AccountEntity.class,
+        "email",
+        AccountEntity::getEmail,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link AccountEntity} field "password".
+     */
+    public static final StringField<AccountEntity> password = StringField.create(
+        AccountEntity.class,
+        "password",
+        AccountEntity::getPassword,
         false
     );
 }
