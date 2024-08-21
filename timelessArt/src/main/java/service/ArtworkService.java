@@ -3,7 +3,7 @@ package service;
 
 import DTO.ArtworkDTO;
 import DTO.ArtworkListDTO;
-import DTO.mapper.ArtworkImageMapper;
+import Mapper.ArtworkImageMapper;
 import entity.ArtworkEntity;
 import entity.ImageEntity;
 import entity.ArtistEntity;

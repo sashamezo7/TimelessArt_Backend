@@ -64,7 +64,7 @@ public class ClientsController {
         }
     }
     @PATCH
-    @Path("UpdateClient/{email}")
+    @Path("UpdateClient")
     @RolesAllowed("CLIENT")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

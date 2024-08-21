@@ -1,4 +1,4 @@
-package DTO.mapper;
+package Mapper;
 
 import DTO.ArtworkDTO;
 import entity.ArtworkEntity;
