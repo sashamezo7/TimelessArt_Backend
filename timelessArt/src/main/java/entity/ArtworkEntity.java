@@ -73,6 +73,7 @@ public class ArtworkEntity{
     @Column(name = "height")
     private Float height;
 
-    public enum typeArtwork {pictura,sculptura,grafica,fotografie,altul}
+    public enum typeArtwork {pictura,sculptura,grafica,fotografie,altul;
+    }
     public enum artworkStatus {disponibil,vandut,in_expozitie,indisponibil}
 }

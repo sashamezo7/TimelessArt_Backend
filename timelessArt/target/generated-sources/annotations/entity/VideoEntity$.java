@@ -23,15 +23,6 @@ public final class VideoEntity$ {
         false
     );
     /**
-     * This Field corresponds to the {@link VideoEntity} field "artwork".
-     */
-    public static final ReferenceField<VideoEntity, ArtworkEntity> artwork = ReferenceField.create(
-        VideoEntity.class,
-        "artwork",
-        VideoEntity::getArtwork,
-        false
-    );
-    /**
      * This Field corresponds to the {@link VideoEntity} field "url".
      */
     public static final StringField<VideoEntity> url = StringField.create(
@@ -47,6 +38,15 @@ public final class VideoEntity$ {
         VideoEntity.class,
         "id",
         VideoEntity::getId,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link VideoEntity} field "artwork".
+     */
+    public static final ReferenceField<VideoEntity, ArtworkEntity> artwork = ReferenceField.create(
+        VideoEntity.class,
+        "artwork",
+        VideoEntity::getArtwork,
         false
     );
 }

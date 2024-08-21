@@ -5,7 +5,7 @@
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/AuthenticationResponse.java
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/EmailRequest.java
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/PasswordResetRequest.java
-/Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/mapper/ArtworkMapper.java
+/Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/DTO/mapper/ArtworkImageMapper.java
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/controller/AccountController.java
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/controller/ArtworkController.java
 /Users/sasamezo/Developer/TimelessArtFolder/Backend/TimelessArt_Backend/timelessArt/src/main/java/entity/AccountEntity.java

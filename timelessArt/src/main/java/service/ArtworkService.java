@@ -3,7 +3,7 @@ package service;
 
 import DTO.ArtworkDTO;
 import DTO.ArtworkListDTO;
-import DTO.mapper.ArtworkMapper;
+import DTO.mapper.ArtworkImageMapper;
 import entity.ArtworkEntity;
 import entity.ImageEntity;
 import entity.ArtistEntity;
@@ -86,7 +86,7 @@ public class ArtworkService {
     public List<ArtworkDTO> artworksByArtist(Long artistId) {
         List<ArtworkEntity> artworks = artworkRepository.findByArtistId(artistId);
         return artworks.stream()
-                .map(ArtworkMapper.INSTANCE::toDTO)
+                .map(ArtworkImageMapper::toDTO)
                 .collect(Collectors.toList());
     }
     @Transactional
@@ -95,7 +95,7 @@ public class ArtworkService {
         if (artwork == null) {
             return Optional.empty();
         }
-        ArtworkDTO artworkDTO = ArtworkMapper.INSTANCE.toDTO(artwork);
+        ArtworkDTO artworkDTO = ArtworkImageMapper.toDTO(artwork);
         return Optional.of(artworkDTO);
     }
 
