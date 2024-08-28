@@ -18,6 +18,8 @@ public class ImageEntity {
     private int id;
 
     private String url;
+    @Column(name = "preview_url")
+    private String previewUrl;
 
     @ManyToOne()
     @JoinColumn(name = "id_artwork")

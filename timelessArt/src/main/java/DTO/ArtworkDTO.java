@@ -27,5 +27,6 @@ public class ArtworkDTO {
     private Float width;
     private Float height;
     private List<String> imageUrls;
+    private List<String> previewUrl;
 
 }

@@ -31,40 +31,22 @@ public class ArtworkService {
 
     @Transactional
     public List<ArtworkEntity> createArtworks(ArtworkListDTO artworkListDTO, int artistId) {
-        ArtistEntity artist = artistRepository.findById((long)artistId);
-        List<ArtworkEntity> artworks = new ArrayList<>();
 
+        ArtistEntity artist = artistRepository.findById((long) artistId);
 
-        for (ArtworkDTO artworkDTO : artworkListDTO.getArtworks()) {
-
-            ArtworkEntity artwork = new ArtworkEntity();
-            artwork.setTitle(artworkDTO.getTitle());
-            artwork.setArtworkDate(null);
-            artwork.setArtworkType(ArtworkEntity.typeArtwork.valueOf(artworkDTO.getArtworkType()));
-            artwork.setDescription(artworkDTO.getDescription());
-            artwork.setPrice(artworkDTO.getPrice());
-            artwork.setStatus(ArtworkEntity.artworkStatus.disponibil);
-            artwork.setFrame(artworkDTO.isFrame());
-            artwork.setTechnique(artworkDTO.getTechnique());
-            artwork.setHeight(artworkDTO.getHeight());
-            artwork.setLength(artworkDTO.getLength());
-            artwork.setWidth(artworkDTO.getWidth());
-            artwork.setArtist(artist);
-
-            List<ImageEntity> images = new ArrayList<>();
-            for (String url : artworkDTO.getImageUrls()) {
-                ImageEntity image = new ImageEntity();
-                image.setUrl(url);
-                image.setArtwork(artwork);
-                images.add(image);
-            }
-
-            artwork.setImage(images);
-            artworkRepository.persist(artwork);
-            artworks.add(artwork);
+        if (artist == null) {
+            throw new IllegalArgumentException("Artist with ID " + artistId + " not found.");
         }
 
-        return artworks;
+
+        return artworkListDTO.getArtworks().stream()
+                .map(artworkDTO -> {
+                    ArtworkEntity artwork = ArtworkImageMapper.toEntity(artworkDTO);
+                    artwork.setArtist(artist);
+                    return artwork;
+                })
+                .peek(artworkRepository::persist)
+                .collect(Collectors.toList());
     }
 
     @Transactional
@@ -97,6 +79,18 @@ public class ArtworkService {
         }
         ArtworkDTO artworkDTO = ArtworkImageMapper.toDTO(artwork);
         return Optional.of(artworkDTO);
+    }
+    @Transactional
+    public List<ArtworkDTO> getArtworks(ArtworkEntity.typeArtwork typeArtwork){
+        return artworkRepository.findByTypeArtwork(typeArtwork).stream()
+                .map(ArtworkImageMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+    @Transactional
+    public List<ArtworkDTO> getAllArtworks(){
+        return artworkRepository.findAll().stream()
+                .map(ArtworkImageMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
 }

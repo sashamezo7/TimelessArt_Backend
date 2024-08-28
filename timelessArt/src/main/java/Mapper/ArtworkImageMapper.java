@@ -28,6 +28,9 @@ public class ArtworkImageMapper {
                 .imageUrls(entity.getImage() != null ? entity.getImage().stream()
                         .map(ImageEntity::getUrl)
                         .collect(Collectors.toList()) : null)
+                .previewUrl(entity.getImage() != null ? entity.getImage().stream()
+                        .map(ImageEntity::getPreviewUrl)
+                        .collect(Collectors.toList()) : null)
                 .build();
     }
 
@@ -57,8 +60,10 @@ public class ArtworkImageMapper {
                             .build())
                     .collect(Collectors.toList());
 
+
             entity.setImage(images);
         }
+
 
         return entity;
     }

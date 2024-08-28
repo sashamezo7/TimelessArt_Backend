@@ -6,6 +6,7 @@ import exception.InvalidCredentialsException;
 import io.smallrye.common.annotation.Blocking;
 import io.smallrye.mutiny.Uni;
 import io.smallrye.mutiny.infrastructure.Infrastructure;
+import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;

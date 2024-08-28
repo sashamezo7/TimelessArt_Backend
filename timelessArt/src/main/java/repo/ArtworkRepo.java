@@ -15,4 +15,5 @@ public class ArtworkRepo implements PanacheRepository<ArtworkEntity> {
     public List<ArtworkEntity> findByArtistId(Long artistId){
         return list("artist.id", artistId);
     }
+    public List<ArtworkEntity> findByTypeArtwork(ArtworkEntity.typeArtwork typeArtwork){return  list("artworkType", typeArtwork);}
 }

@@ -126,6 +126,49 @@ public class ArtworkController {
                     .build();
         }
     }
+    @GET
+    @Path("/by/type")
+    @PermitAll
+    public Response getArtworks(@QueryParam("typeArtwork") String typeArtwork){
+        try{
+            List<ArtworkDTO> artworks = artworkService.getArtworks(ArtworkEntity.typeArtwork.valueOf(typeArtwork));
+            if(artworks.isEmpty()){
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity(new MessageResponse("Artworks does not exists"))
+                        .build();
+            }else{
+                return Response.status(Response.Status.OK)
+                        .entity(artworks)
+                        .build();
+            }
+        }catch (Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(new MessageResponse(e.getMessage()))
+                    .build();
+        }
+    }
+    @GET
+    @Path("/all/artworks")
+    @PermitAll
+    public Response getAllArtworks(){
+        try{
+            List<ArtworkDTO> artworks = artworkService.getAllArtworks();
+            if(artworks.isEmpty()){
+              return Response.status(Response.Status.NOT_FOUND)
+                        .entity(new MessageResponse("No artworks were found"))
+                        .build();
+            }
+            else {
+                return Response.status(Response.Status.OK)
+                        .entity(artworks)
+                        .build();
+            }
+        }catch (Exception e){
+           return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity(new MessageResponse(e.getMessage()))
+                    .build();
+        }
+    }
 
 }
 
