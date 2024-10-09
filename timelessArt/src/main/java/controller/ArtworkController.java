@@ -105,9 +105,9 @@ public class ArtworkController {
         }
     }
     @GET
-    @Path("/by/id")
+    @Path("/by/{id}")
     @PermitAll
-    public Response getArtworkById(@QueryParam("artworkId") Long artworkId){
+    public Response getArtworkById(@PathParam("id") Long artworkId){
         try {
             Optional<ArtworkDTO> artworkDTO = artworkService.getArtworkById(artworkId);
             if(artworkDTO.isEmpty()){

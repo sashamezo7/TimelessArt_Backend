@@ -21,7 +21,7 @@ public class ClientsController {
 
     @GET
     @Path("/me")
-    @RolesAllowed("CLIENT")
+    @RolesAllowed({"CLIENT", "ADMIN"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMyInfo() {
         try {
@@ -52,7 +52,7 @@ public class ClientsController {
 
     @POST
     @Path("Register")
-    @RolesAllowed("CLIENT")
+    @RolesAllowed({"CLIENT","ADMIN"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response completeProfile(ClientDTO clientDTO) {
         try {
