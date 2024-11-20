@@ -6,11 +6,12 @@ import io.quarkus.mailer.Mailer;
 import io.quarkus.mailer.Mail;
 
 @ApplicationScoped
-public class EmailService {
+public class EmailService implements service.Repo.EmailServiceRepo {
 
     @Inject
     Mailer mailer;
 
+    @Override
     public void sendPasswordResetEmail(String toEmail, String resetLink) {
         System.out.println("Preparing to send email to: " + toEmail);
         System.out.println("Reset link: " + resetLink);

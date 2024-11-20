@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class ArtworkService {
+public class ArtworkService implements service.Repo.ArtworkServiceRepo {
 
     @Inject
     ArtworkRepo artworkRepository;
@@ -29,6 +29,7 @@ public class ArtworkService {
     ArtistRepo artistRepository;
 
 
+    @Override
     @Transactional
     public List<ArtworkEntity> createArtworks(ArtworkListDTO artworkListDTO, int artistId) {
 
@@ -49,6 +50,7 @@ public class ArtworkService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     @Transactional
     public boolean deleteArtwork(Long artworkId) {
         ArtworkEntity artwork = artworkRepository.findById(artworkId);
@@ -59,11 +61,13 @@ public class ArtworkService {
         return true;
     }
 
+    @Override
     public boolean isOwner(String email, Long artworkId){
         ArtworkEntity artwork = artworkRepository.findById(artworkId);
         return artwork.getArtist().getAccount().getEmail().equals(email);
     }
 
+    @Override
     @Transactional
     public List<ArtworkDTO> artworksByArtist(Long artistId) {
         List<ArtworkEntity> artworks = artworkRepository.findByArtistId(artistId);
@@ -71,6 +75,7 @@ public class ArtworkService {
                 .map(ArtworkImageMapper::toDTO)
                 .collect(Collectors.toList());
     }
+    @Override
     @Transactional
     public Optional<ArtworkDTO> getArtworkById(Long artworkId) {
         ArtworkEntity artwork = artworkRepository.findById(artworkId);
@@ -80,12 +85,14 @@ public class ArtworkService {
         ArtworkDTO artworkDTO = ArtworkImageMapper.toDTO(artwork);
         return Optional.of(artworkDTO);
     }
+    @Override
     @Transactional
     public List<ArtworkDTO> getArtworks(ArtworkEntity.typeArtwork typeArtwork){
         return artworkRepository.findByTypeArtwork(typeArtwork).stream()
                 .map(ArtworkImageMapper::toDTO)
                 .collect(Collectors.toList());
     }
+    @Override
     @Transactional
     public List<ArtworkDTO> getAllArtworks(){
         return artworkRepository.findAll().stream()

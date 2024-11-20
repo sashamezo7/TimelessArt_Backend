@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 @ApplicationScoped
-public class JwtService {
+public class JwtService implements service.Repo.JwtServiceRepo {
 
     private final String issuer;
     private final String audience;
@@ -45,6 +45,7 @@ public class JwtService {
         this.publicKeyLocation = publicKeyLocation;
     }
 
+    @Override
     @PostConstruct
     public void init() throws Exception {
         byte[] privateKeyBytes = Files.readAllBytes(Paths.get(privateKeyLocation));
@@ -71,6 +72,7 @@ public class JwtService {
     }
 
 
+    @Override
     public String generateJwtToken(AccountEntity account) {
         Claims claims = Jwts.claims();
         claims.setSubject(account.getEmail());

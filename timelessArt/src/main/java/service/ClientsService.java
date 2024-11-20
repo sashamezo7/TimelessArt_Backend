@@ -15,12 +15,13 @@ import java.util.stream.Collectors;
 
 @ApplicationScoped
 @AllArgsConstructor
-public class ClientsService {
+public class ClientsService implements service.Repo.ClientsServiceRepo {
 
     private final ClientsRepo clientsRepo;
     private final ClientMapper clientMapper;
 
     private final AccountRepo accountRepository;
+    @Override
     @Transactional
     public ClientDTO getInfoAboutMe(String email) {
         AccountEntity accountEntity = accountRepository.findByEmail(email)
@@ -33,6 +34,7 @@ public class ClientsService {
 
         return clientMapper.mapToDto(clientEntity);
     }
+    @Override
     @Transactional
     public List<ClientDTO> getAllClients() {
         return clientsRepo.findAll()
@@ -41,8 +43,9 @@ public class ClientsService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     @Transactional
-    public void createNewClient(ClientDTO clientDTO,String email) {
+    public void createNewClient(ClientDTO clientDTO, String email) {
         AccountEntity accountEntity = accountRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Account not found"));
 
@@ -50,6 +53,7 @@ public class ClientsService {
 
         clientsRepo.save(clientEntity);
     }
+    @Override
     @Transactional
     public void updateClientField(String email, String fieldName, String newValue) {
         AccountEntity accountEntity = accountRepository.findByEmail(email)

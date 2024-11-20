@@ -12,6 +12,7 @@ import jakarta.annotation.security.RolesAllowed;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.jboss.resteasy.reactive.server.core.multipart.FormData;
+import org.springframework.stereotype.Component;
 import service.AccountService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -26,7 +27,7 @@ import java.util.Map;
 @Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class AccountController {
+public class AccountController implements controller.Repo.AccountControllerRepo {
 
     @Inject
     AccountService accountService;
@@ -34,6 +35,7 @@ public class AccountController {
     SimpleEmailTest emailTestService;
 
 
+    @Override
     @POST
     @Path("/create")
     public Response createAccount(AccountRequest request) {
@@ -45,6 +47,7 @@ public class AccountController {
         }
     }
 
+    @Override
     @DELETE
     @Path("/{id}")
     public Response deleteAccount(@PathParam("id") Long id) {
@@ -55,6 +58,7 @@ public class AccountController {
             return Response.status(Response.Status.NOT_FOUND).entity("Account not found").build();
         }
     }
+    @Override
     @POST
     @Path("/login")
     public Response login(AuthenticationRequest request) {
@@ -66,6 +70,7 @@ public class AccountController {
         }
     }
 
+    @Override
     @GET
     @RolesAllowed("ADMIN")
     @Path("/all")
@@ -77,6 +82,7 @@ public class AccountController {
     }
 
 
+    @Override
     @POST
     @Path("/request-password-reset")
     @Operation(summary = "Request password reset", description = "Sends a password reset link to the specified email address.")
@@ -94,6 +100,7 @@ public class AccountController {
         }
     }
 
+    @Override
     @POST
     @Path("/reset-password")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -106,6 +113,7 @@ public class AccountController {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
+    @Override
     @GET
     @Path("/send")
     @Blocking
@@ -120,6 +128,7 @@ public class AccountController {
         }
     }
 
+    @Override
     @POST
     @Path("/test/mail")
     public Uni<Response> sendEmailAsync() {

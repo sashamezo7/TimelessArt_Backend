@@ -19,9 +19,9 @@ import java.util.UUID;
 
 
 @ApplicationScoped
-public class AccountService {
+public class AccountService implements service.Repo.AccountServiceRepo {
 
-    @Inject
+    @Autowired
     AccountRepo accountRepo;
 
     @Inject
@@ -29,27 +29,24 @@ public class AccountService {
     @Inject
     EmailService emailService;
 
+    @Override
     @Transactional
     public AccountEntity createAccount(String email, String password) {
-        // Verifică dacă există un cont cu acest email
+
         accountRepo.findByEmail(email).ifPresent(existingAccount -> {
             throw new IllegalArgumentException("User already exists");
         });
 
-        // Validarea emailului
         if (!EmailValidator.isValid(email)) {
             throw new IllegalArgumentException("Email not valid");
         }
 
-        // Validarea parolei
         if (!PasswordValidator.isValid(password)) {
             throw new IllegalArgumentException("Password should be at least 8 characters long, contain at least one lowercase letter, and at least one uppercase letter");
         }
 
-        // Hash-ul parolei
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
 
-        // Crearea și salvarea contului
         AccountEntity account = AccountEntity.builder()
                 .email(email)
                 .password(bcryptHashString)
@@ -58,11 +55,11 @@ public class AccountService {
                 .build();
         accountRepo.save(account);
 
-        // Returnarea contului creat
         return account;
     }
 
 
+    @Override
     @Transactional
     public boolean deleteAccount(Long id) {
         if (accountRepo.existsById(id)) {
@@ -73,6 +70,7 @@ public class AccountService {
         }
     }
 
+    @Override
     @Transactional
     public String authenticate(String email, String password) {
         if (!EmailValidator.isValid(email)) {
@@ -98,6 +96,7 @@ public class AccountService {
         return jwtService.generateJwtToken(account);
     }
 
+    @Override
     @Transactional
     public void requestPasswordReset(String email) {
         AccountEntity account = accountRepo.findByEmail(email).orElseThrow(() -> new RuntimeException("Account not found"));
@@ -116,6 +115,7 @@ public class AccountService {
 
 
 
+    @Override
     @Transactional
     public void resetPassword(String token, String newPassword) {
         AccountEntity account = accountRepo.findByToken(token);
@@ -130,11 +130,7 @@ public class AccountService {
     }
 
 
-
-    private String generateToken() {
-        return UUID.randomUUID().toString();
-    }
-
+    @Override
     @Transactional
     public List<AccountEntity> getAllAccounts() {
         return accountRepo.findAll();

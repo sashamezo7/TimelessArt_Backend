@@ -19,7 +19,7 @@ import java.util.Optional;
 @Path("/artwork")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ArtworkController {
+public class ArtworkController implements controller.Repo.ArtworkControllerRepo {
     @Inject
     ArtworkService artworkService;
 
@@ -28,6 +28,7 @@ public class ArtworkController {
 
 
 
+    @Override
     @POST
     @Path("/add")
     @RolesAllowed({"ADMIN", "ARTIST"})
@@ -49,6 +50,7 @@ public class ArtworkController {
         }
     }
 
+    @Override
     @DELETE
     @Path("/delete/{id}")
     @RolesAllowed({"ADMIN", "ARTIST"})
@@ -83,6 +85,7 @@ public class ArtworkController {
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
+    @Override
     @GET
     @Path("/all/by/artist")
     @PermitAll
@@ -104,6 +107,7 @@ public class ArtworkController {
                     .build();
         }
     }
+    @Override
     @GET
     @Path("/by/{id}")
     @PermitAll
@@ -126,6 +130,7 @@ public class ArtworkController {
                     .build();
         }
     }
+    @Override
     @GET
     @Path("/by/type")
     @PermitAll
@@ -147,6 +152,7 @@ public class ArtworkController {
                     .build();
         }
     }
+    @Override
     @GET
     @Path("/all/artworks")
     @PermitAll
